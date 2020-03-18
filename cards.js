@@ -5,10 +5,9 @@ const deck = Shuffle.shuffle();
 let playerHand = [];
 let dealerHand = [];
 
-deck.deal(2, [playerHand, dealerHand]);
-const addPoints = hand =>
+const addPoints = cards =>
   //calculates how much points each card is worth
-  hand.forEach(card => {
+  cards.forEach(card => {
     switch (card.sort) {
       case 11:
         // Jack
@@ -34,7 +33,10 @@ const addPoints = hand =>
         card.points = card.sort;
     }
   });
-addPoints(playerHand);
+addPoints(deck.cards);
+
+deck.deal(2, [playerHand, dealerHand]);
+// addPoints(playerHand);
 console.log(playerHand);
 
 // deck.cards.forEach(card =>
