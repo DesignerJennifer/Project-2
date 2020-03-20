@@ -4,7 +4,8 @@ class Player {
   constructor(descrip = "player", chips = 1000) {
     this.id = uuid.v4();
     this.description = descrip;
-    this.hand = [];
+    this.hand1 = [];
+    this.hand2 = [];
     this.chips = chips;
   }
 }
