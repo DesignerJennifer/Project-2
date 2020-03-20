@@ -9,7 +9,7 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
 				  host     : 'localhost',
 				  user     : 'root',
-				  password : 'mlevi1250'
+				  password : ''
 				});
 
 connection.query('USE blackjackApp');	
@@ -30,7 +30,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-		connection.query("select * from play_tbl where id = "+id,function(err,rows){	
+		connection.query("select * from users where id = "+id,function(err,rows){	
 			done(err, rows[0]);
 		});
     });
