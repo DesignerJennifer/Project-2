@@ -1,0 +1,15 @@
+body {
+  background-image: url("./Images/table_Matt.png"), url("./Images/Table.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: black;
+}
+
+.bets {
+  font-size: 1em;
+  width: 30px;
+}
+
+#doubloons {
+  width: 40px;
+}
