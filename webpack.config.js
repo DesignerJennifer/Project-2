@@ -1,10 +1,10 @@
-const path = require("path");
+const path = require('path')
 
 module.exports = {
-  entry: "./src/Blackjack.js",
+  entry: './src/Blackjack.js',
   output: {
-    path: path.join(__dirname, "public"),
-    filename: "bundle.js"
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -12,22 +12,22 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-react"],
-            plugins: ["@babel/plugin-proposal-class-properties"]
+            presets: ['@babel/preset-react'],
+            plugins: ['@babel/plugin-proposal-class-properties']
           }
         }
       },
       {
         test: /\.s?css$/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
-  devtool: "cheap-module-eval-source-map",
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true
   }
-};
+}
