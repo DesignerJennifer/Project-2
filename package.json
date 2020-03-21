@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "live-server public/",
-    "build": "webpack",
-    "dev-server": "webpack-dev-server"
+    "test": "npm run lint",
+    "start": "node server.js",
+    "lint": "eslint --quiet .",
+    "fix": "eslint --fix .",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,6 @@
     "css-loader": "^3.4.2",
     "express": "^4.17.1",
     "live-server": "^1.2.1",
-    "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
