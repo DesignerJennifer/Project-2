@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jquery": true
+  },
+  "extends": [
+    "standard"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": "2018",
+    "sourceType": "module"
+  },
+  "ignorePatterns": ["./public/bundle.js", "node_modules/"],
+  "rules": {
+  }
+}
