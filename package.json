@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "live-server public/",
+    "test": "npm run lint",
+    "start": "node server.js",
+    "lint": "eslint --quiet .",
+    "fix": "eslint --fix .",
+    "watch": "nodemon server.js",
     "build": "webpack",
     "dev-server": "webpack-dev-server"
   },
@@ -25,6 +28,7 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
+    "express": "^4.17.1",
     "live-server": "^1.2.1",
     "mysql2": "^2.1.0",
     "node-sass": "^4.13.1",
