@@ -22,7 +22,7 @@ const createDeck = () => {
           break;
         case 14:
           // Ace
-          card.points = [1, 11];
+          card.points = 11;
 
           break;
         default:
