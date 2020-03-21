@@ -1,39 +1,39 @@
-const Shuffle = require("shuffle");
+const Shuffle = require('shuffle')
 
 const createDeck = () => {
   const addPoints = cards =>
-    //calculates how much points each card is worth
+    // calculates how much points each card is worth
     cards.forEach(card => {
       switch (card.sort) {
         case 11:
           // Jack
-          card.points = 10;
+          card.points = 10
 
-          break;
+          break
         case 12:
           // Queen
-          card.points = 10;
+          card.points = 10
 
-          break;
+          break
         case 13:
           // King
-          card.points = 10;
+          card.points = 10
 
-          break;
+          break
         case 14:
           // Ace
-          card.points = 11;
+          card.points = 11
 
-          break;
+          break
         default:
-          card.points = card.sort;
+          card.points = card.sort
       }
-    });
+    })
 
-  let deck = Shuffle.shuffle();
-  addPoints(deck.cards);
+  const deck = Shuffle.shuffle()
+  addPoints(deck.cards)
 
-  return deck;
-};
+  return deck
+}
 
-module.exports = createDeck;
+module.exports = createDeck
