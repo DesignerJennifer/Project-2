@@ -48,10 +48,12 @@ const main = () => {
 
   let Deck = createDeck(); // already shuffled
   Human.hand1 = [];
+  Human.hand2 = []; //Only for split pairs
   Dealer.hand1 = [];
 
   console.log(`You have ${Human.chips} chips`);
   let bet = Number(prompt("How much do you want to bet?"));
+  console.clear();
 
   // Start the game, deal each player 2 cards
   Deck.deal(2, [Human.hand1, Dealer.hand1]);
