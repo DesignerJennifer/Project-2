@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "4899",
-    "database": "database_development",
+    "password": "password",
+    "database": "blackjackApp",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
