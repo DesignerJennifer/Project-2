@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blackjack!</title>
-  </head>
-  <body>
-    <script src="./bundle.js"></script>
-    <script src="./scripts.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Blackjack!</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<button id="startBtn">Start Game</button>
+		<button id="stopBtn">Stop Game</button>
+
+		<h1 id="chipCount">Chips: 1000</h1>
+		<div class="dealerHand"></div>
+		<div class="humanHand"></div>
+		<div id="playerButtons">
+			<button id="hit">Hit</button>
+			<button id="stand">Stand</button>
+		</div>
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous"
+		></script>
+		<script src="./bundle.js"></script>
+	</body>
 </html>

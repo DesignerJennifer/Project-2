@@ -26,6 +26,15 @@ const getHandStrings = hand => {
 	});
 	return shortStrings;
 };
+const displayCard = (card, divToAppend) => {
+	const cardToAdd = document.createElement("div");
+	cardToAdd.setAttribute("class", "card");
+	cardToAdd.innerHTML = `
+  <h3 class="card__header-title">${card.toString()}</h3>
+  <p class="card__header-meta">${card.toShortDisplayString()}</p>
+  `;
+	divToAppend.appendChild(cardToAdd);
+};
 
 const countAces = hand => {
 	let aceCount = 0;
@@ -37,11 +46,14 @@ const countAces = hand => {
 	return aceCount;
 };
 
-// let running = true;
+let running = true;
 // Get player bet
 const main = () => {
+	const count = document.querySelector("#chipCount");
+	count.textContent = `Chips: ${Human.chips}`;
+
 	if (Human.chips <= 0) {
-		// running = false;
+		running = false;
 		console.log("You're out of chips!");
 		return;
 	}
@@ -52,11 +64,22 @@ const main = () => {
 	Dealer.hand1 = [];
 
 	console.log(`You have ${Human.chips} chips`);
-	let bet = Number(prompt("How much do you want to bet?"));
+	// let bet = Number(prompt("How much do you want to bet?"));
+	let bet = 500;
 	console.clear();
 
+	const humanCardDiv = document.querySelector(".humanHand");
+	const dealerCardDiv = document.querySelector(".dealerHand");
+
 	// Start the game, deal each player 2 cards
+
+	$(humanCardDiv).empty();
+	$(dealerCardDiv).empty();
 	Deck.deal(2, [Human.hand1, Dealer.hand1]);
+
+	displayCard(Dealer.hand1[0], dealerCardDiv);
+
+	Human.hand1.forEach(card => displayCard(card, humanCardDiv));
 
 	// Check for naturals
 
@@ -99,6 +122,7 @@ const main = () => {
 
 		if (hit) {
 			Deck.deal(1, [Human.hand1]);
+			displayCard(Human.hand1[Human.hand1.length - 1], humanCardDiv);
 			humanScore = getHandScore(Human.hand1);
 			humanStrings = getHandStrings(Human.hand1);
 			if (humanScore > 21 && countAces(Human.hand1) > 0) {
@@ -171,6 +195,18 @@ const main = () => {
 
 // 3 rounds for testing
 
-for (let i = 0; i < 3; i++) {
+// while (running) {
+document
+	.querySelector("#stopBtn")
+	.addEventListener("click", () => (running = false));
+document.querySelector("#startBtn").addEventListener("click", () => {
+	if (running === false) {
+		running = true;
+	}
+
 	main();
-}
+});
+
+// main();
+
+// }
