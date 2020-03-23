@@ -10,6 +10,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Walter+Turncoat&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="styleshee.css" />
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -17,18 +22,51 @@
     <title>Blackjack</title>
   </head>
   <body>
-    <div class="row">
-      <div class="col s3">
-        <img src="Images/doubloons.png" id="doubloons" />Opponent Bet: 100
-      </div>
-      <div class="col s3">
-        <!-- Cards here -->
-      </div>
-      <div class="col s3">
-        <p>Player Name</p>
-        <p>Games Won</p>
+    <div class="container">
+      <div class="row">
+        <div class="col s3">
+          <p class="playerName">Player 1 Name</p>
+          <p class="wins">Games Won:</p>
+        </div>
+
+        <div class="col s6">
+          <img src="Images/01_Ace_Clubs_100.png" />
+          <img src="Images/01_Ace_Clubs_100.png" />
+        </div>
+
+        <div class="col s3 bets">
+          <img src="Images/doubloons.png" id="doubloons" />
+          Your current bet:
+          <p>100</p>
+        </div>
       </div>
     </div>
+
+    <div class="container">
+      <div class="row">
+        <img src="images/01_Ace_Clubs_100.png" />
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col s3">
+          <p class="playerName">Player 2 Name</p>
+          <p class="wins">Games Won</p>
+        </div>
+
+        <div class="col s6">
+          <img src="Images/01_Ace_Clubs_100.png" />
+          <img src="Images/01_Ace_Clubs_100.png" />
+        </div>
+
+        <div class="col s3 bets">
+          <img src="Images/doubloons.png" id="doubloons" />Your current bet:
+          <p>100</p>
+        </div>
+      </div>
+    </div>
+
     <script>
       console.log("hello");
     </script>

@@ -1,6 +1,6 @@
 body {
-  background-image: url("./Images/table_Matt.png"), url("./Images/Table.jpg");
-  background-size: 100%;
+  background-image: url("./Images/Table_and_matt-01.jpg");
+  background-position: center;
   background-repeat: no-repeat;
   color: black;
 }
@@ -12,4 +12,22 @@ body {
 
 #doubloons {
   width: 40px;
+}
+
+.playerName {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 800;
+  font-size: 1.5em;
+}
+
+.wins {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.bets {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 800;
+  font-size: 1em;
 }
