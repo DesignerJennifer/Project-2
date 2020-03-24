@@ -3,20 +3,22 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
+    "node": true,
     "jquery": true
   },
-  "extends": [
-    "standard"
-  ],
+  "extends": "eslint:recommended",
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
-    "ecmaVersion": "2018",
-    "sourceType": "module"
+    "ecmaVersion": 2018
   },
-  "ignorePatterns": ["./public/bundle.js", "node_modules/"],
   "rules": {
+    "indent": ["error", "tab"],
+    "linebreak-style": 0,
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"]
+   
   }
 }
