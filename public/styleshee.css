@@ -1,7 +1,8 @@
 body {
-  background-image: url("./Images/Table_and_matt-01.jpg");
-  background-position: center;
+  background-image: url("./Images/table_Matt_Large.jpg");
+  background-position: center center;
   background-repeat: no-repeat;
+  background-size: cover;
   color: black;
 }
 
