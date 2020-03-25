@@ -26,6 +26,7 @@
   "dependencies": {
     "@babel/core": "^7.8.6",
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
     "express": "^4.17.1",
@@ -43,11 +44,16 @@
     "webpack": "^4.41.6"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "sequelize-cli": "^5.5.1",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "sequelize-cli": "^5.5.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   }
