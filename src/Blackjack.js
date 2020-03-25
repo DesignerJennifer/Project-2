@@ -17,16 +17,19 @@ class Blackjack {
 		this.dealerStrings;
 		this.imageDict = imageDict;
 		this.playersTurn = false;
+		this.setChipCount();
 	}
+	setChipCount = () => {
+		$("#chipCount").text(`${this.Human.chips}`);
+	};
 
 	restartGame = () => {
-		const count = document.querySelector("#chipCount");
-		count.textContent = `${this.Human.chips}`;
-		setTimeout(() => {
-			if (this.running) {
-				this.start();
-			}
-		}, 5000);
+		this.setChipCount();
+		$(".announcement").show();
+		document.querySelector("#betForm").focus();
+		if (this.Human.chips < 50) {
+			$("#betInput").attr("min", this.Human.chips);
+		}
 	};
 
 	getHandScore = hand => {
@@ -54,7 +57,7 @@ class Blackjack {
 	};
 	displayCard = (card, divToAppend) => {
 		const cardToAdd = `
-		<img src=${this.imageDict[card.toShortDisplayString()]}>
+		<img class="cardImage" src=${this.imageDict[card.toShortDisplayString()]}>
 
 
   `;
@@ -74,20 +77,10 @@ class Blackjack {
 	start = () => {
 		this.running = true;
 
-		if (this.Human.chips <= 0) {
-			console.log("You're out of chips!");
-			return;
-		}
-
 		this.Human.hand1 = [];
 		this.Human.hand2 = []; //Only for split pairs
 		this.Dealer.hand1 = [];
 		this.Deck = createDeck();
-
-		console.log(`You have ${this.Human.chips} chips`);
-		// let bet = Number(prompt("How much do you want to bet?"));
-		this.bet = 500;
-		console.clear();
 
 		// Start the game, deal each player 2 cards
 
@@ -101,10 +94,15 @@ class Blackjack {
 		for (const card of this.Human.hand1) {
 			this.displayCard(card, this.humanCardDiv);
 		}
+		this.humanScore = this.getHandScore(this.Human.hand1);
+		this.humanStrings = this.getHandStrings(this.Human.hand1);
+		$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+		$(".dealerHandScore").text("Hand Score: ");
+
 		// Promise wrapper
 		setTimeout(() => {
 			this.main();
-		}, 50);
+		}, 100);
 	};
 
 	checkForWinner = () => {
@@ -112,18 +110,18 @@ class Blackjack {
 		this.dealerScore = this.getHandScore(this.Dealer.hand1);
 
 		if (this.humanScore > this.dealerScore || this.dealerScore > 21) {
-			console.log("You won this round");
+			$("#announce-text").text("Arr you won this round! Bet again?");
 			this.Human.chips += this.bet;
 			this.restartGame();
 
 			return;
 		} else if (this.humanScore === this.dealerScore) {
-			console.log("Round tied");
+			$("#announce-text").text("Round tied! Play again");
 			this.restartGame();
 
 			return;
 		} else {
-			console.log("Dealer won this round");
+			$("#announce-text").text("Dealer won this round. Better luck next time.");
 			this.Human.chips -= this.bet;
 			this.restartGame();
 
@@ -149,19 +147,27 @@ class Blackjack {
 				this.convertAces(this.Dealer.hand1);
 				this.dealerScore = this.getHandScore(this.Dealer.hand1);
 			}
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+
 			setTimeout(() => this.runDealerTurn(), 1000);
 		} else {
 			this.checkForWinner();
 		}
 	};
 
-	runPlayerTurn = () => {
-		let hit;
-		if (this.humanScore < 21) {
-			hit = confirm("Do you want to hit?");
-		}
+	endPlayerTurn = () => {
+		this.playersTurn = false;
+		// this.humanScore = this.getHandScore(this.Human.hand1);
+		//Dealer's turn
+		this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+		$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+		document.querySelector("#hit").disabled = true;
+		document.querySelector("#stand").disabled = true;
+		setTimeout(() => this.runDealerTurn(), 1000);
+	};
 
-		if (hit) {
+	runPlayerTurn = () => {
+		if (this.playersTurn) {
 			this.Deck.deal(1, [this.Human.hand1]);
 			this.displayCard(
 				this.Human.hand1[this.Human.hand1.length - 1],
@@ -174,52 +180,60 @@ class Blackjack {
 				this.convertAces(this.Human.hand1);
 				this.humanScore = this.getHandScore(this.Human.hand1);
 			}
-			setTimeout(() => this.runPlayerTurn(), 50);
-		} else {
-			this.humanScore = this.getHandScore(this.Human.hand1);
+			$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
 
 			if (this.humanScore > 21) {
-				console.log("You busted!");
+				$("#announce-text").text("You busted! Try again.");
+				document.querySelector("#hit").disabled = true;
+				document.querySelector("#stand").disabled = true;
 				this.Human.chips -= this.bet;
+				this.playersTurn = false;
 				this.restartGame();
 
 				return;
+			} else if (this.humanScore === 21) {
+				this.endPlayerTurn();
 			}
-			//Dealer's turn
-			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
-			setTimeout(() => this.runDealerTurn(), 1000);
 		}
 	};
 
 	main = () => {
 		// Check for naturals
 
-		this.humanScore = this.getHandScore(this.Human.hand1);
-		this.humanStrings = this.getHandStrings(this.Human.hand1);
 		this.dealerScore = this.getHandScore(this.Dealer.hand1);
 		this.dealerStrings = this.getHandStrings(this.Dealer.hand1);
 
 		if (this.humanScore === 21 && this.dealerScore !== 21) {
-			console.log("You got a natural!");
+			//Human got a natural
+			$("#announce-text").text("You got a natural!");
 			let purse = this.bet * 1.5;
 			this.Human.chips += purse;
 			this.restartGame();
 			return;
 		} else if (this.dealerScore === 21 && this.humanScore !== 21) {
+			// Dealer got a natural
 			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
-			console.log("Dealer scored a natural.");
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+			$("#announce-text").text("Dealer scored a natural. Try again");
 			this.Human.chips -= this.bet;
 			this.restartGame();
 			return;
 		} else if (this.dealerScore === 21 && this.humanScore === 21) {
-			console.log("Round tied");
+			//Both got naturals
+			$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+
+			$("#announce-text").text("Round tied. Play again");
 			this.restartGame();
 			return;
 		}
 
 		//Humans turn
 
-		this.runPlayerTurn();
+		this.playersTurn = true;
+		document.querySelector("#hit").disabled = false;
+		document.querySelector("#stand").disabled = false;
 	};
 }
 
@@ -228,12 +242,26 @@ const Game = new Blackjack();
 document.querySelector("#hit").disabled = true;
 document.querySelector("#stand").disabled = true;
 
-$("#startBtn").on("click", () => {
-	if (!Game.running) {
+$("#betForm").on("submit", e => {
+	e.preventDefault();
+	Game.bet = Number($("#betInput").val());
+
+	if (Game.bet <= Game.Human.chips) {
+		$("#betText").text(`Your current bet: ${Game.bet}`);
+		$(".announcement").hide();
 		Game.start();
+	} else if (Game.Human.chips <= 0) {
+		$("#announce-text").text("You're out of chips!");
+
+		return;
+	} else {
+		$("#announce-text").text("You can't bet that much!");
 	}
 });
 
-$("#stopBtn").on("click", () => {
-	Game.running = false;
-});
+// $("#saveScore").on("click", () => {
+// 	Game.running = false;
+// });
+
+$("#hit").on("click", Game.runPlayerTurn);
+$("#stand").on("click", Game.endPlayerTurn);

@@ -22,13 +22,21 @@
 		<title>Blackjack</title>
 	</head>
 	<body>
-		<button id="startBtn">Start Game</button>
-		<button id="stopBtn">Stop Game</button>
+		<button id="saveScore">Save Score</button>
+		<div class="container">
+			<div class="row center announcement">
+				<h1 id="announce-text">Place your bet!</h1>
+				<form id="betForm">
+					<input type="number" id="betInput" value="50" min="50" />
+					<input type="submit" value="Place Bet" />
+				</form>
+			</div>
+		</div>
 		<div class="container">
 			<div class="row" style="margin-top: 80px;">
 				<div class="col s4">
 					<p class="playerName">Dealer</p>
-					<p class="wins">Games Won:</p>
+					<p class="wins dealerHandScore">Hand Score:</p>
 				</div>
 
 				<!-- <div class="col s2"></div> -->
@@ -53,7 +61,7 @@
 			<div class="row">
 				<div class="col s4">
 					<p class="playerName">Player 2 Name</p>
-					<p class="wins">Games Won</p>
+					<p class="wins humanHandScore">Hand Score:</p>
 				</div>
 
 				<!-- <div class="col s2"></div> -->
@@ -61,8 +69,9 @@
 				<div class="col s4 humanHand"></div>
 
 				<div class="col s4 bets">
-					<img src="Images/doubloons.png" id="doubloons" />Your current bet:
-					<p id="chipCount">100</p>
+					<img src="Images/doubloons.png" id="doubloons" />
+					<p id="chipCount"></p>
+					<h5 id="betText">Your current bet:</h5>
 				</div>
 			</div>
 		</div>
