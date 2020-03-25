@@ -1,5 +1,6 @@
 const createDeck = require("./createDeck"),
-	Player = require("./Player");
+	Player = require("./Player"),
+	imageDict = require("./imageDictionary");
 
 class Blackjack {
 	constructor() {
@@ -14,11 +15,13 @@ class Blackjack {
 		this.humanStrings;
 		this.dealerScore = 0;
 		this.dealerStrings;
+		this.imageDict = imageDict;
+		this.playersTurn = false;
 	}
 
 	restartGame = () => {
 		const count = document.querySelector("#chipCount");
-		count.textContent = `Chips: ${this.Human.chips}`;
+		count.textContent = `${this.Human.chips}`;
 		setTimeout(() => {
 			if (this.running) {
 				this.start();
@@ -50,17 +53,14 @@ class Blackjack {
 		return shortStrings;
 	};
 	displayCard = (card, divToAppend) => {
-		// const cardToAdd = document.createElement("div");
-		// cardToAdd.setAttribute("class", "card");
-		const cardToAdd = `<div class="card">
-  <h3 class="card__header-title">${card.toString()}</h3>
-  <p class="card__header-meta">${card.toShortDisplayString()}</p>
-  </div>`;
+		const cardToAdd = `
+		<img src=${this.imageDict[card.toShortDisplayString()]}>
+
+
+  `;
 		$(divToAppend).append(cardToAdd);
 	};
-	// dealerTurn = ()=>{
 
-	// }
 	countAces = hand => {
 		let aceCount = 0;
 		hand.forEach(card => {
@@ -224,6 +224,9 @@ class Blackjack {
 }
 
 const Game = new Blackjack();
+
+document.querySelector("#hit").disabled = true;
+document.querySelector("#stand").disabled = true;
 
 $("#startBtn").on("click", () => {
 	if (!Game.running) {
