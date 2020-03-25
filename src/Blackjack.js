@@ -1,8 +1,8 @@
 const createDeck = require("./createDeck"),
 	Player = require("./Player");
 
-const Human = new Player('human')
-const Dealer = new Player('dealer')
+const Human = new Player("human");
+const Dealer = new Player("dealer");
 
 const getHandScore = hand => {
 	// Gets the score of each card

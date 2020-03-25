@@ -1,4 +1,4 @@
-const Shuffle = require('shuffle')
+const Shuffle = require("shuffle");
 
 const createDeck = () => {
 	const addPoints = cards =>
@@ -36,4 +36,4 @@ const createDeck = () => {
 	return deck;
 };
 
-module.exports = createDeck
+module.exports = createDeck;

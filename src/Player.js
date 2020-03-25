@@ -1,4 +1,4 @@
-const uuid = require('uuid')
+const uuid = require("uuid");
 
 class Player {
 	constructor(descrip = "player", chips = 1000) {
@@ -10,4 +10,4 @@ class Player {
 	}
 }
 
-module.exports = Player
+module.exports = Player;
