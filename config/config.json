@@ -9,15 +9,15 @@
   },
   "test": {
     "username": "root",
-    "password": "mlevi1250",
-    "database": "blackjackApp",
+    "password": "4899",
+    "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "4899",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql",
