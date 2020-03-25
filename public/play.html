@@ -1,32 +1,37 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
-    <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
 
     <link
-      href="https://fonts.googleapis.com/css?family=Walter+Turncoat&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Walter+Turncoat&display=swap"
     />
+
     <link rel="stylesheet" type="text/css" href="styleshee.css" />
-    <!-- Compiled and minified JavaScript -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js"></script>
+    <script type="text/javascript"></script>
 
     <title>Blackjack</title>
   </head>
+
   <body>
     <div class="container">
       <div class="row" style="margin-top: 80px;">
         <div class="col s4">
-          <p class="playerName">Player 1 Name</p>
-          <p class="wins">Games Won:</p>
+          <p id="Human">name here</p>
+          <p class="score">Games Won:</p>
         </div>
 
         <div class="col s2">
@@ -54,8 +59,8 @@
     <div class="container">
       <div class="row">
         <div class="col s4">
-          <p class="playerName">Player 2 Name</p>
-          <p class="wins">Games Won</p>
+          <p id="Dealer">Player 2 Name</p>
+          <p class="score">Games Won</p>
         </div>
 
         <div class="col s2">
@@ -72,9 +77,5 @@
         </div>
       </div>
     </div>
-
-    <script>
-      console.log("hello");
-    </script>
   </body>
 </html>
