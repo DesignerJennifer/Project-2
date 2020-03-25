@@ -206,6 +206,8 @@ class Blackjack {
 		if (this.humanScore === 21 && this.dealerScore !== 21) {
 			//Human got a natural
 			$("#announce-text").text("You got a natural!");
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
 			let purse = this.bet * 1.5;
 			this.Human.chips += purse;
 			this.restartGame();
@@ -251,7 +253,7 @@ $("#betForm").on("submit", e => {
 		$(".announcement").hide();
 		Game.start();
 	} else if (Game.Human.chips <= 0) {
-		$("#announce-text").text("You're out of chips!");
+		$("#announce-text").text("You're out of doubloons!");
 
 		return;
 	} else {
