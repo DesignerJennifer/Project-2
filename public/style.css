@@ -1,0 +1,39 @@
+body,
+html {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+}
+*,
+:before,
+:after {
+	box-sizing: border-box;
+}
+
+.card__header-title {
+	margin: 0 0 0.25em;
+}
+.dealerHand {
+	display: flex;
+	justify-content: center;
+}
+.humanHand {
+	display: flex;
+	justify-content: center;
+}
+
+.card {
+	border: 3px solid black;
+	padding: 1em;
+	max-width: 10em;
+	margin: 1em;
+}
+#playerButtons {
+	display: flex;
+	justify-content: center;
+}
+button {
+	margin: 3em 1em;
+	padding: 0.5em 1em;
+	font-size: 2em;
+}
