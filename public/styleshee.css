@@ -80,6 +80,36 @@ body {
   line-height: 0.5em;
 }
 
+.playerButtons {
+  text-decoration: none;
+  color: #fff;
+  background-color: #bf360c;
+  text-align: center;
+  letter-spacing: 0.5px;
+  -webkit-transition: background-color #d84315;
+  transition: background-color #d84315;
+  cursor: pointer;
+}
+
+.homePageButtons {
+  text-decoration: none;
+  color: #fff;
+  background-color: #bf360c;
+  text-align: center;
+  letter-spacing: 0.5px;
+  -webkit-transition: background-color #d84315;
+  transition: background-color #d84315;
+  cursor: pointer;
+  width: 150px;
+}
+
+.scoreSave {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .score {
   font-family: "Walter Turncoat", cursive;
   font-weight: 600;
@@ -87,8 +117,21 @@ body {
 }
 
 .logoAnimate {
+  margin-top: 40px;
   animation-duration: 2s;
   animation-iteration-count: initial;
+}
+
+#startbtn {
+  text-decoration: none;
+  color: #fff;
+  background-color: #bf360c;
+  text-align: center;
+  letter-spacing: 0.5px;
+  -webkit-transition: background-color #d84315;
+  transition: background-color #d84315;
+  cursor: pointer;
+  width: 150px;
 }
 
 /* New styles */
@@ -109,10 +152,10 @@ body {
   margin: 1em;
 } */
 
-#playerButtons {
+/* #playerButtons {
   display: flex;
   justify-content: center;
-}
+} */
 button {
   margin: 3em 1em;
   padding: 0.5em 1em;

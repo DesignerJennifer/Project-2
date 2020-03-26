@@ -3,36 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Materialize CSS Library -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
+
+    <!-- Animate CSS Libary -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
     />
 
+    <!-- Google Font -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Walter+Turncoat&display=swap"
     />
+
+    <!-- Our stylesheet -->
     <link rel="stylesheet" type="text/css" href="styleshee.css" />
+    
     <title>Blackjack</title>
+
   </head>
+
   <body>
+
+    <!-- Background matt image -->
+    <div class="tableMattDiv" id="tableMatt">
+    
+      <!-- Page content -->
     <div class="container">
+
+      <!-- Fist Row Logo animation -->
       <div class="row">
         <img
           src="./Images/table_Matt_Large.svg"
           class="logoAnimate fadeInDown"
           alt="BlackJack Title"
         />
+        </div>
+
+        <!-- Second Row Button links -->
+
         <div class="row center">
-          <button type="button">START</button>
-          <button type="button">HIGH SCORES</button>
-          <button type="button">RULES</button>
+          <!-- This should also trigger a modal for the user to put in their name -->
+          <a href="play.html" id="startbtn" class="btn" >START</a>
+
+         <p><a href="*" class="btn homePageButtons" id="hit">RULES</a>
+          <a href="scores.html" class="btn homePageButtons" id="hit">HIGH SCORES</a>
+          </p> 
         </div>
       </div>
-    </div>
+
+  
   </body>
 </html>

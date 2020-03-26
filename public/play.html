@@ -59,6 +59,8 @@
           <div class="col s3">
             <p id="Dealer">DealerName</p>
             <p class="dealerHandScore body-font">Hand Score: 00</p>
+             <p><a class="btn playerButtons" id="hit">Hit</a>
+                    <a class="btn playerButtons" id="hit">Stand</a></p>
           </div>
 
           <!-- The dealer's 1st card will be rendered here -->
@@ -88,8 +90,9 @@
             <!-- The dealer's bet will be rendered here -->
             <div class="col s3 right bets">
               <p id="dealerBet">
-                <img src="Images/doubloons.png" id="doubloons"/>000
-            </p>
+                <img src="Images/doubloons.png" id="doubloons"/> 
+                <p>Current Bet: 000</p>
+                <p>Remaining Money: 000</p>
             </div>
 
          <!-- End of first row  -->
@@ -113,6 +116,10 @@
             <div class="col s3">
                 <p id="Human">HumanName</p>
                 <p class="HumanHandScore body-font">Hand Score: 00</p>
+                <p><a class="btn playerButtons" id="hit">Hit</a>
+                    <a class="btn playerButtons" id="hit">Stand</a>
+                </p>
+        
             </div>
 
           <!-- The Human's 1st card will be rendered here -->
@@ -142,17 +149,21 @@
             <!-- The dealer's bet will be rendered here -->
             <div class="col s3 right bets">
               <p id="dealerBet">
-                <img src="Images/doubloons.png" id="doubloons"/>000
-            </p>
+                <p id="dealerBet">
+                <img src="Images/doubloons.png" id="doubloons"/> 
+                <p>Current Bet: 000</p>
+                <p>Remaining Money: 000</p>
             </div>
 
         <!-- End of third row  -->
         </div>
-      
 
-    <!-- <div id="tableMatt"> -->
+    <div class="row">
+        <a id="saveScore" class="btn playerButtons" id="hit">SAVE SCORE</a>
+    </div>
+</div>
+    <!-- Script file links -->
 
-    <!-- Script files linked -->
     <!-- jquery -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
