@@ -1,21 +1,10 @@
-/* body,
-html {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-}
-*,
-:before,
-:after {
-  box-sizing: border-box;
-} */
-
 /* full Background image - wood */
 body {
   background-image: url("./Images/woodBackground_table.jpg");
   background-repeat: repeat;
 }
 
+/* Logo in nav bar */
 .blackjackLogo {
   height: 50px;
   margin: 10px;
@@ -38,6 +27,10 @@ body {
   background-size: 1100px, 500px;
   /* width: 1100px;
   height: 500px; */
+}
+
+.displayDeck {
+  margin: auto;
 }
 
 .dealerCardDiv {
@@ -64,6 +57,13 @@ body {
 }
 
 #Dealer {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 800;
+  font-size: 1.5em;
+  margin-top: 15px;
+}
+
+#Human {
   font-family: "Walter Turncoat", cursive;
   font-weight: 800;
   font-size: 1.5em;
