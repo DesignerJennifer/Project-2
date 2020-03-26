@@ -1,9 +1,12 @@
 body {
-  background-image: url("./Images/table_Matt_Large.jpg");
-  background-position: center center;
+  background-image: url("./Images/woodBackground_table.jpg");
+  background-repeat: repeat;
+}
+
+#tableMatt {
+  background-image: url("./Images/table_Matt_860px.png");
   background-repeat: no-repeat;
-  background-size: cover;
-  color: black;
+  background-size: 100%;
 }
 
 .bets {
