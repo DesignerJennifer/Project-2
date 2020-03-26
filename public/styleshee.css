@@ -1,4 +1,4 @@
-body,
+/* body,
 html {
   height: 100%;
   width: 100%;
@@ -8,22 +8,49 @@ html {
 :before,
 :after {
   box-sizing: border-box;
-}
+} */
 
+/* full Background image - wood */
 body {
   background-image: url("./Images/woodBackground_table.jpg");
   background-repeat: repeat;
 }
 
-#tableMatt {
-  background-image: url("./Images/table_Matt_860px.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
+.blackjackLogo {
+  height: 50px;
+  margin: 10px;
+  object-fit: contain;
 }
 
+/* game matt - partchment paper */
+.tableMattDiv {
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 30px;
+  width: 1180px;
+  height: 620px;
+}
+
+#tableMatt {
+  background-image: url("./Images/table_Matt_1180px.png");
+  background-repeat: no-repeat;
+  background-size: 1100px, 500px;
+  /* width: 1100px;
+  height: 500px; */
+}
+
+.dealerCardDiv {
+  /* align-content: center; */
+  margin: auto;
+}
+
+/* style for the current bet display */
 .bets {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 800;
   font-size: 1em;
-  width: 30px;
+  align-content: flex-end;
 }
 
 #doubloons {
@@ -48,12 +75,6 @@ body {
   font-size: 1em;
 }
 
-.bets {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 800;
-  font-size: 1em;
-}
-
 .logoAnimate {
   animation-duration: 2s;
   animation-iteration-count: initial;
@@ -64,21 +85,19 @@ body {
 .card__header-title {
   margin: 0 0 0.25em;
 }
-.dealerHand {
-  display: flex;
-  justify-content: center;
-}
+
 .humanHand {
   display: flex;
   justify-content: center;
 }
 
-.card {
-  border: 3px solid black;
+/* .card {
+  border: 3px solid;
   padding: 1em;
   max-width: 10em;
   margin: 1em;
-}
+} */
+
 #playerButtons {
   display: flex;
   justify-content: center;
