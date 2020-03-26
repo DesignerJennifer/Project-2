@@ -155,8 +155,17 @@ class Blackjack {
 		}
 	};
 
+	doubleDown = () => {
+		document.querySelector("#double-down").disabled = true;
+		this.bet = this.bet * 2;
+		$("#betText").text(`Your current bet: ${this.bet}`);
+		this.runPlayerTurn();
+	};
+
 	endPlayerTurn = () => {
 		this.playersTurn = false;
+		document.querySelector("#double-down").disabled = true;
+
 		// this.humanScore = this.getHandScore(this.Human.hand1);
 		//Dealer's turn
 		this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
@@ -167,6 +176,8 @@ class Blackjack {
 	};
 
 	runPlayerTurn = () => {
+		document.querySelector("#double-down").disabled = true;
+
 		if (this.playersTurn) {
 			this.Deck.deal(1, [this.Human.hand1]);
 			this.displayCard(
@@ -231,6 +242,15 @@ class Blackjack {
 			return;
 		}
 
+		// Check for double down
+		if (
+			this.humanScore === 9 ||
+			this.humanScore === 10 ||
+			this.humanScore === 11
+		) {
+			document.querySelector("#double-down").disabled = false;
+		}
+
 		//Humans turn
 
 		this.playersTurn = true;
@@ -243,6 +263,7 @@ const Game = new Blackjack();
 
 document.querySelector("#hit").disabled = true;
 document.querySelector("#stand").disabled = true;
+document.querySelector("#double-down").disabled = true;
 
 $("#betForm").on("submit", e => {
 	e.preventDefault();
@@ -267,3 +288,4 @@ $("#betForm").on("submit", e => {
 
 $("#hit").on("click", Game.runPlayerTurn);
 $("#stand").on("click", Game.endPlayerTurn);
+$("#double-down").on("click", Game.doubleDown);
