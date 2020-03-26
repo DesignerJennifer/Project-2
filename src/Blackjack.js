@@ -157,9 +157,15 @@ class Blackjack {
 
 	doubleDown = () => {
 		document.querySelector("#double-down").disabled = true;
-		this.bet = this.bet * 2;
+		let double = this.bet * 2;
+		if (double < this.Human.chips) {
+			this.bet = double;
+		} else {
+			this.bet = this.Human.chips;
+		}
 		$("#betText").text(`Your current bet: ${this.bet}`);
 		this.runPlayerTurn();
+		this.endPlayerTurn();
 	};
 
 	endPlayerTurn = () => {
@@ -237,7 +243,7 @@ class Blackjack {
 			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
 			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
 
-			$("#announce-text").text("Round tied. Play again");
+			$("#announce-text").text("You both got naturals! Play again");
 			this.restartGame();
 			return;
 		}
@@ -249,6 +255,18 @@ class Blackjack {
 			this.humanScore === 11
 		) {
 			document.querySelector("#double-down").disabled = false;
+		}
+
+		//Double aces, reduce the first to 1 point
+		if (this.countAces(this.Human.hand1) === 2) {
+			this.Human.hand1[0].points = 1;
+			this.getHandScore(this.Human.hand1);
+			$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+		}
+		if (this.countAces(this.Dealer.hand1) === 2) {
+			this.Dealer.hand1[0].points = 1;
+			this.getHandScore(this.Dealer.hand1);
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
 		}
 
 		//Humans turn
