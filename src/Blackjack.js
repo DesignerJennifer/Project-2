@@ -41,11 +41,22 @@ class Blackjack {
 		return score;
 	};
 	convertAces = hand => {
+		//Make list of aces
+		let aceList = [];
 		hand.forEach(card => {
 			if (card.description === "Ace") {
-				card.points = 1;
+				aceList.push(card);
 			}
 		});
+		//Convert 1 ace
+		aceList[0].points = 1;
+
+		//If score still over 21, convert all aces
+		if (this.getHandScore(hand) > 21) {
+			for (const card of aceList) {
+				card.points = 1;
+			}
+		}
 	};
 
 	getHandStrings = hand => {
@@ -57,10 +68,7 @@ class Blackjack {
 	};
 	displayCard = (card, divToAppend) => {
 		const cardToAdd = `
-		<img class="cardImage" src=${this.imageDict[card.toShortDisplayString()]}>
-
-
-  `;
+		<img class="cardImage" src=${this.imageDict[card.toShortDisplayString()]}>`;
 		$(divToAppend).append(cardToAdd);
 	};
 
@@ -108,7 +116,6 @@ class Blackjack {
 	checkForWinner = () => {
 		//Check both players scores for the winner
 		this.dealerScore = this.getHandScore(this.Dealer.hand1);
-
 		if (this.humanScore > this.dealerScore || this.dealerScore > 21) {
 			$("#announce-text").text("Arr you won this round! Bet again?");
 			this.Human.chips += this.bet;
@@ -155,8 +162,23 @@ class Blackjack {
 		}
 	};
 
+	doubleDown = () => {
+		document.querySelector("#double-down").disabled = true;
+		let double = this.bet * 2;
+		if (double < this.Human.chips) {
+			this.bet = double;
+		} else {
+			this.bet = this.Human.chips;
+		}
+		$("#betText").text(`Your current bet: ${this.bet}`);
+		this.runPlayerTurn();
+		this.endPlayerTurn();
+	};
+
 	endPlayerTurn = () => {
 		this.playersTurn = false;
+		document.querySelector("#double-down").disabled = true;
+
 		// this.humanScore = this.getHandScore(this.Human.hand1);
 		//Dealer's turn
 		this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
@@ -167,6 +189,8 @@ class Blackjack {
 	};
 
 	runPlayerTurn = () => {
+		document.querySelector("#double-down").disabled = true;
+
 		if (this.playersTurn) {
 			this.Deck.deal(1, [this.Human.hand1]);
 			this.displayCard(
@@ -206,6 +230,8 @@ class Blackjack {
 		if (this.humanScore === 21 && this.dealerScore !== 21) {
 			//Human got a natural
 			$("#announce-text").text("You got a natural!");
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
 			let purse = this.bet * 1.5;
 			this.Human.chips += purse;
 			this.restartGame();
@@ -224,9 +250,30 @@ class Blackjack {
 			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
 			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
 
-			$("#announce-text").text("Round tied. Play again");
+			$("#announce-text").text("You both got naturals! Play again");
 			this.restartGame();
 			return;
+		}
+
+		// Check for double down
+		if (
+			this.humanScore === 9 ||
+			this.humanScore === 10 ||
+			this.humanScore === 11
+		) {
+			document.querySelector("#double-down").disabled = false;
+		}
+
+		//Double aces, reduce the first to 1 point
+		if (this.countAces(this.Human.hand1) === 2) {
+			this.Human.hand1[0].points = 1;
+			this.getHandScore(this.Human.hand1);
+			$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+		}
+		if (this.countAces(this.Dealer.hand1) === 2) {
+			this.Dealer.hand1[0].points = 1;
+			this.getHandScore(this.Dealer.hand1);
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
 		}
 
 		//Humans turn
@@ -241,6 +288,7 @@ const Game = new Blackjack();
 
 document.querySelector("#hit").disabled = true;
 document.querySelector("#stand").disabled = true;
+document.querySelector("#double-down").disabled = true;
 
 $("#betForm").on("submit", e => {
 	e.preventDefault();
@@ -251,7 +299,7 @@ $("#betForm").on("submit", e => {
 		$(".announcement").hide();
 		Game.start();
 	} else if (Game.Human.chips <= 0) {
-		$("#announce-text").text("You're out of chips!");
+		$("#announce-text").text("You're out of doubloons!");
 
 		return;
 	} else {
@@ -265,3 +313,4 @@ $("#betForm").on("submit", e => {
 
 $("#hit").on("click", Game.runPlayerTurn);
 $("#stand").on("click", Game.endPlayerTurn);
+$("#double-down").on("click", Game.doubleDown);
