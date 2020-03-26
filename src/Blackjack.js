@@ -41,11 +41,22 @@ class Blackjack {
 		return score;
 	};
 	convertAces = hand => {
+		//Make list of aces
+		let aceList = [];
 		hand.forEach(card => {
 			if (card.description === "Ace") {
-				card.points = 1;
+				aceList.push(card);
 			}
 		});
+		//Convert 1 ace
+		aceList[0].points = 1;
+
+		//If score still over 21, convert all aces
+		if (this.getHandScore(hand) > 21) {
+			for (const card of aceList) {
+				card.points = 1;
+			}
+		}
 	};
 
 	getHandStrings = hand => {
@@ -57,10 +68,7 @@ class Blackjack {
 	};
 	displayCard = (card, divToAppend) => {
 		const cardToAdd = `
-		<img class="cardImage" src=${this.imageDict[card.toShortDisplayString()]}>
-
-
-  `;
+		<img class="cardImage" src=${this.imageDict[card.toShortDisplayString()]}>`;
 		$(divToAppend).append(cardToAdd);
 	};
 
@@ -108,7 +116,6 @@ class Blackjack {
 	checkForWinner = () => {
 		//Check both players scores for the winner
 		this.dealerScore = this.getHandScore(this.Dealer.hand1);
-
 		if (this.humanScore > this.dealerScore || this.dealerScore > 21) {
 			$("#announce-text").text("Arr you won this round! Bet again?");
 			this.Human.chips += this.bet;
