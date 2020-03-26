@@ -24,6 +24,13 @@
 
     <!-- Our stylesheet -->
     <link rel="stylesheet" type="text/css" href="styleshee.css" />
+
+    <!-- jquery -->
+     <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
     
     <title>Blackjack</title>
 
@@ -50,7 +57,8 @@
 
         <div class="row center hpbtndiv">
           <!-- This should also trigger a modal for the user to put in their name -->
-          <a href="play.html" id="startbtn" class="btn" >START</a>
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal1" >START</a>
+          
           <!-- This will trigger a modal that tells the player how to play Blackjack -->
          <p><a href="*" class="btn homePageButtons" id="hit">RULES</a>
           <a href="scores.html" class="btn homePageButtons" id="hit">HIGH SCORES</a>
@@ -58,6 +66,16 @@
         </div>
       </div>
 
-  
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Enter your Name</h4>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+ 
+  <!-- <script src="scripts.js"></script> -->
   </body>
 </html>
