@@ -67,6 +67,14 @@ body {
   font-family: "Walter Turncoat", cursive;
   font-weight: 800;
   font-size: 1.5em;
+  margin-top: 15px;
+}
+
+.body-font {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 0.5em;
 }
 
 .score {
