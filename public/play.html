@@ -40,7 +40,7 @@
     </nav>
 
     <!-- Background matt image -->
-    <div class="tableMattDiv" id="tableMatt">
+    <div class="col s12 tableMattDiv" id="tableMatt">
       <!-- modal for placing bets -->
       <!-- <div id="modal1" class="modal">
             <div class="modal-content">
@@ -51,20 +51,24 @@
 			</form>
         </div> -->
 
-<!-- First row with Dealer name, hand score, hand and current bet -->
+      <!-- First row with Dealer name, hand score, hand and current bet -->
       <div class="container">
         <div class="row">
-
           <!-- Dealer name and hand score -->
           <div class="col s3">
             <p id="Dealer">DealerName</p>
             <p class="dealerHandScore body-font">Hand Score: 00</p>
-             <p><a class="btn playerButtons" id="hit">Hit</a>
-                    <a class="btn playerButtons" id="hit">Stand</a></p>
+            <p>
+              <a class="btn playerButtons" id="hit">Hit</a>
+              <a class="btn playerButtons" id="hit">Stand</a>
+            </p>
           </div>
 
           <!-- The dealer's 1st card will be rendered here -->
-          <div class="col s2 dealerCardDiv" style="width: 122.5px; height: 150px;">
+          <div
+            class="col s2 dealerCardDiv"
+            style="width: 122.5px; height: 150px;"
+          >
             <div class="renderCard">
               <!-- for placement only -->
               <img src="images/01_Ace_Clubs_100.png" />
@@ -72,7 +76,10 @@
           </div>
 
           <!-- The dealer's 2nd card will be rendered here -->
-          <div class="col s2 dealerCardDiv" style="width: 122.5px; height: 150px;">
+          <div
+            class="col s2 dealerCardDiv"
+            style="width: 122.5px; height: 150px;"
+          >
             <div class="renderCard">
               <!-- for placement only -->
               <img src="images/01_Ace_Clubs_100.png" />
@@ -80,50 +87,56 @@
           </div>
 
           <!-- The dealer's 3rd card will be rendered here if called for -->
-          <div class="col s2 dealerCardDiv" style="width: 122.5px; height: 150px;">
+          <div
+            class="col s2 dealerCardDiv"
+            style="width: 122.5px; height: 150px;"
+          >
             <div class="renderCard">
               <!-- for placement only -->
               <img src="images/01_Ace_Clubs_100.png" />
             </div>
           </div>
 
-            <!-- The dealer's bet will be rendered here -->
-            <div class="col s3 right bets">
-              <p id="dealerBet">
-                <img src="Images/doubloons.png" id="doubloons"/> 
-                <p>Current Bet: 000</p>
-                <p>Remaining Money: 000</p>
-            </div>
+          <!-- The dealer's bet will be rendered here -->
+          <div class="col s3 right bets">
+            <p id="dealerBet">
+              <img src="Images/doubloons.png" id="doubloons" />
+            </p>
 
-         <!-- End of first row  -->
+            <p>Current Bet: 000</p>
+            <p>Remaining Money: 000</p>
+          </div>
+
+          <!-- End of first row  -->
         </div>
 
-<!-- Second row with image of deck -->
+        <!-- Second row with image of deck -->
         <div class="row">
+          <!-- The deck -->
+          <div class="displayDeck" style="width: 122.5px; height: 150px;">
+            <img src="images/skull_Card_back.png" />
+          </div>
 
-            <!-- The deck -->
-            <div class="displayDeck" style="width: 122.5px; height: 150px;">
-                <img src="images/skull_Card_back.png" />
-            </div>
-                     
-        <!-- End of Second row  -->
+          <!-- End of Second row  -->
         </div>
 
-<!-- Third row with Dealer name, hand score, hand and current bet -->
+        <!-- Third row with Dealer name, hand score, hand and current bet -->
         <div class="row">
-
-        <!-- Human name and hand score -->
-            <div class="col s3">
-                <p id="Human">HumanName</p>
-                <p class="HumanHandScore body-font">Hand Score: 00</p>
-                <p><a class="btn playerButtons" id="hit">Hit</a>
-                    <a class="btn playerButtons" id="hit">Stand</a>
-                </p>
-        
-            </div>
+          <!-- Human name and hand score -->
+          <div class="col s3">
+            <p id="Human">HumanName</p>
+            <p class="HumanHandScore body-font">Hand Score: 00</p>
+            <p>
+              <a class="btn playerButtons" id="hit">Hit</a>
+              <a class="btn playerButtons" id="hit">Stand</a>
+            </p>
+          </div>
 
           <!-- The Human's 1st card will be rendered here -->
-          <div class="col s2 HumanCardDiv" style="width: 122.5px; height: 150px;">
+          <div
+            class="col s2 HumanCardDiv"
+            style="width: 122.5px; height: 150px;"
+          >
             <div class="renderCard">
               <!-- for placement only -->
               <img src="images/01_Ace_Clubs_100.png" />
@@ -131,7 +144,10 @@
           </div>
 
           <!-- The dealer's 2nd card will be rendered here -->
-          <div class="col s2 HumanCardDiv" style="width: 122.5px; height: 150px;">
+          <div
+            class="col s2 HumanCardDiv"
+            style="width: 122.5px; height: 150px;"
+          >
             <div class="renderCard">
               <!-- for placement only -->
               <img src="images/01_Ace_Clubs_100.png" />
@@ -139,31 +155,36 @@
           </div>
 
           <!-- The dealer's 3rd card will be rendered here if called for -->
-          <div class="col s2 HumanCardDiv" style="width: 122.5px; height: 150px;">
+          <div
+            class="col s2 HumanCardDiv"
+            style="width: 122.5px; height: 150px;"
+          >
             <div class="renderCard">
               <!-- for placement only -->
               <img src="images/01_Ace_Clubs_100.png" />
             </div>
           </div>
 
-            <!-- The dealer's bet will be rendered here -->
-            <div class="col s3 right bets">
-              <p id="dealerBet">
-                <p id="dealerBet">
-                <img src="Images/doubloons.png" id="doubloons"/> 
-                <p>Current Bet: 000</p>
-                <p>Remaining Money: 000</p>
-            </div>
+          <!-- The dealer's bet will be rendered here -->
+          <div class="col s3 right bets">
+            <p id="dealerBet"></p>
+            <p id="dealerBet">
+              <img src="Images/doubloons.png" id="doubloons" />
+            </p>
 
-        <!-- End of third row  -->
+            <p>Current Bet: 000</p>
+            <p>Remaining Money: 000</p>
+          </div>
+
+          <!-- End of third row  -->
         </div>
 
-    <div class="row">
-        <a id="saveScore" class="btn playerButtons" id="hit">SAVE SCORE</a>
+        <div class="row">
+          <a id="saveScore" class="btn playerButtons" id="hit">SAVE SCORE</a>
+        </div>
+      </div>
+      <!-- Script file links -->
     </div>
-</div>
-    <!-- Script file links -->
-
     <!-- jquery -->
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
