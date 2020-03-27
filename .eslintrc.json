@@ -3,9 +3,11 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jquery": true
   },
   "extends": "eslint:recommended",
+  "parser": "babel-eslint",
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -15,7 +17,7 @@
   },
   "rules": {
     "indent": ["error", "tab"],
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": 0,
     "quotes": ["error", "double"],
     "semi": ["error", "always"]
    

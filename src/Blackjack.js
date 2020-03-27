@@ -1,176 +1,316 @@
 const createDeck = require("./createDeck"),
-	Player = require("./Player");
+	Player = require("./Player"),
+	imageDict = require("./imageDictionary");
 
-const Human = new Player("human");
-const Dealer = new Player("dealer");
-
-const getHandScore = hand => {
-	// Gets the score of each card
-	let score = 0;
-	hand.forEach(card => {
-		score += card.points;
-	});
-	return score;
-};
-const convertAces = hand => {
-	hand.forEach(card => {
-		if (card.description === "Ace") {
-			card.points = 1;
-		}
-	});
-};
-const getHandStrings = hand => {
-	let shortStrings = [];
-	hand.forEach(card => {
-		shortStrings.push(card.toShortDisplayString());
-	});
-	return shortStrings;
-};
-
-const countAces = hand => {
-	let aceCount = 0;
-	hand.forEach(card => {
-		if (card.description === "Ace") {
-			aceCount++;
-		}
-	});
-	return aceCount;
-};
-
-// let running = true;
-// Get player bet
-const main = () => {
-	if (Human.chips <= 0) {
-		// running = false;
-		console.log("You're out of chips!");
-		return;
+class Blackjack {
+	constructor() {
+		this.Human = new Player("human");
+		this.Dealer = new Player("dealer");
+		this.bet = 0;
+		this.Deck = createDeck(); // already shuffled
+		this.running = false;
+		this.humanCardDiv = document.querySelector(".humanHand");
+		this.dealerCardDiv = document.querySelector(".dealerHand");
+		this.humanScore = 0;
+		this.humanStrings;
+		this.dealerScore = 0;
+		this.dealerStrings;
+		this.imageDict = imageDict;
+		this.playersTurn = false;
+		this.setChipCount();
 	}
+	setChipCount = () => {
+		$("#chipCount").text(`${this.Human.chips}`);
+	};
 
-	let Deck = createDeck(); // already shuffled
-	Human.hand1 = [];
-	Human.hand2 = []; //Only for split pairs
-	Dealer.hand1 = [];
-
-	console.log(`You have ${Human.chips} chips`);
-	let bet = Number(prompt("How much do you want to bet?"));
-	console.clear();
-
-	// Start the game, deal each player 2 cards
-	Deck.deal(2, [Human.hand1, Dealer.hand1]);
-
-	// Check for naturals
-
-	let humanScore = getHandScore(Human.hand1);
-	let humanStrings = getHandStrings(Human.hand1);
-	let dealerScore = getHandScore(Dealer.hand1);
-	let dealerStrings = getHandStrings(Dealer.hand1);
-	console.log(`Player score is ${humanScore}`);
-
-	console.log(`Player cards are ${humanStrings}`);
-
-	console.log(`Dealer score is ${dealerScore}`);
-
-	console.log(`Dealer cards are ${dealerStrings}`);
-
-	if (humanScore === 21 && dealerScore !== 21) {
-		console.log("You got a natural!");
-		let purse = bet * 1.5;
-		Human.chips += purse;
-		return;
-	} else if (dealerScore === 21 && humanScore !== 21) {
-		console.log("Dealer scored a natural.");
-		Human.chips -= bet;
-		return;
-	} else if (dealerScore === 21 && humanScore === 21) {
-		console.log("Round tied");
-		return;
-	}
-
-	//Humans turn
-
-	let playerTurn = true;
-	// let playerBusted = false;
-
-	while (playerTurn) {
-		let hit;
-		if (humanScore < 21) {
-			hit = confirm("Do you want to hit?");
+	restartGame = () => {
+		this.setChipCount();
+		$(".announcement").show();
+		document.querySelector("#betForm").focus();
+		if (this.Human.chips < 50) {
+			$("#betInput").attr("min", this.Human.chips);
 		}
+	};
 
-		if (hit) {
-			Deck.deal(1, [Human.hand1]);
-			humanScore = getHandScore(Human.hand1);
-			humanStrings = getHandStrings(Human.hand1);
-			if (humanScore > 21 && countAces(Human.hand1) > 0) {
-				convertAces(Human.hand1);
-				humanScore = getHandScore(Human.hand1);
+	getHandScore = hand => {
+		// Gets the score of each card
+		let score = 0;
+		hand.forEach(card => {
+			score += card.points;
+		});
+		return score;
+	};
+	convertAces = hand => {
+		//Make list of aces
+		let aceList = [];
+		hand.forEach(card => {
+			if (card.description === "Ace") {
+				aceList.push(card);
 			}
-			console.log(`Player score is ${humanScore}`);
+		});
+		//Convert 1 ace
+		aceList[0].points = 1;
 
-			console.log(`Player cards are ${humanStrings}`);
-		} else {
-			playerTurn = false;
+		//If score still over 21, convert all aces
+		if (this.getHandScore(hand) > 21) {
+			for (const card of aceList) {
+				card.points = 1;
+			}
 		}
-	}
-	humanScore = getHandScore(Human.hand1);
+	};
 
-	if (humanScore > 21) {
-		console.log("You busted!");
-		Human.chips -= bet;
-		return;
-	}
+	getHandStrings = hand => {
+		let shortStrings = [];
+		hand.forEach(card => {
+			shortStrings.push(card.toShortDisplayString());
+		});
+		return shortStrings;
+	};
+	displayCard = (card, divToAppend) => {
+		const cardToAdd = `
+		<img class="cardImage" src=${this.imageDict[card.toShortDisplayString()]}>`;
+		$(divToAppend).append(cardToAdd);
+	};
 
-	console.log(`Player score is ${humanScore}`);
+	countAces = hand => {
+		let aceCount = 0;
+		hand.forEach(card => {
+			if (card.description === "Ace") {
+				aceCount++;
+			}
+		});
+		return aceCount;
+	};
 
-	console.log(`Player cards are ${humanStrings}`);
+	start = () => {
+		this.running = true;
 
-	console.log("Dealer's turn");
+		this.Human.hand1 = [];
+		this.Human.hand2 = []; //Only for split pairs
+		this.Dealer.hand1 = [];
+		this.Deck = createDeck();
 
-	//Dealer's turn
+		// Start the game, deal each player 2 cards
 
-	let dealerTurn = true;
+		$(this.humanCardDiv).empty();
+		$(this.dealerCardDiv).empty();
+		this.Deck.deal(2, [this.Human.hand1, this.Dealer.hand1]);
 
-	while (dealerTurn) {
+		this.displayCard(this.Dealer.hand1[0], this.dealerCardDiv);
+
+		// this.Human.hand1.forEach(card => this.displayCard(card, this.humanCardDiv));
+		for (const card of this.Human.hand1) {
+			this.displayCard(card, this.humanCardDiv);
+		}
+		this.humanScore = this.getHandScore(this.Human.hand1);
+		this.humanStrings = this.getHandStrings(this.Human.hand1);
+		$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+		$(".dealerHandScore").text("Hand Score: ");
+
+		// Promise wrapper
+		setTimeout(() => {
+			this.main();
+		}, 100);
+	};
+
+	checkForWinner = () => {
+		//Check both players scores for the winner
+		this.dealerScore = this.getHandScore(this.Dealer.hand1);
+		if (this.humanScore > this.dealerScore || this.dealerScore > 21) {
+			$("#announce-text").text("Arr you won this round! Bet again?");
+			this.Human.chips += this.bet;
+			this.restartGame();
+
+			return;
+		} else if (this.humanScore === this.dealerScore) {
+			$("#announce-text").text("Round tied! Play again");
+			this.restartGame();
+
+			return;
+		} else {
+			$("#announce-text").text("Dealer won this round. Better luck next time.");
+			this.Human.chips -= this.bet;
+			this.restartGame();
+
+			return;
+		}
+	};
+
+	runDealerTurn = () => {
 		let hit;
-		if (dealerScore <= 16) {
+		if (this.dealerScore <= 16) {
 			hit = true;
 		}
 
 		if (hit) {
-			Deck.deal(1, [Dealer.hand1]);
-			dealerScore = getHandScore(Dealer.hand1);
-			dealerStrings = getHandStrings(Dealer.hand1);
-			if (dealerScore > 21 && countAces(Dealer.hand1) > 0) {
-				convertAces(Dealer.hand1);
-				dealerScore = getHandScore(Dealer.hand1);
+			this.Deck.deal(1, [this.Dealer.hand1]);
+			this.displayCard(
+				this.Dealer.hand1[this.Dealer.hand1.length - 1],
+				this.dealerCardDiv
+			);
+			this.dealerScore = this.getHandScore(this.Dealer.hand1);
+			this.dealerStrings = this.getHandStrings(this.Dealer.hand1);
+			if (this.dealerScore > 21 && this.countAces(this.Dealer.hand1) > 0) {
+				this.convertAces(this.Dealer.hand1);
+				this.dealerScore = this.getHandScore(this.Dealer.hand1);
 			}
-			console.log(`Dealer score is ${dealerScore}`);
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
 
-			console.log(`Dealer cards are ${dealerStrings}`);
+			setTimeout(() => this.runDealerTurn(), 1000);
 		} else {
-			dealerTurn = false;
+			this.checkForWinner();
 		}
-	}
+	};
 
-	//Check both players scores for the winner
-	dealerScore = getHandScore(Dealer.hand1);
+	doubleDown = () => {
+		document.querySelector("#double-down").disabled = true;
+		let double = this.bet * 2;
+		if (double < this.Human.chips) {
+			this.bet = double;
+		} else {
+			this.bet = this.Human.chips;
+		}
+		$("#betText").text(`Your current bet: ${this.bet}`);
+		this.runPlayerTurn();
+		this.endPlayerTurn();
+	};
 
-	if (humanScore > dealerScore || dealerScore > 21) {
-		console.log("You won this round");
-		Human.chips += bet;
-		return;
-	} else if (humanScore === dealerScore) {
-		console.log("Round tied");
+	endPlayerTurn = () => {
+		this.playersTurn = false;
+		document.querySelector("#double-down").disabled = true;
+
+		// this.humanScore = this.getHandScore(this.Human.hand1);
+		//Dealer's turn
+		this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+		$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+		document.querySelector("#hit").disabled = true;
+		document.querySelector("#stand").disabled = true;
+		setTimeout(() => this.runDealerTurn(), 1000);
+	};
+
+	runPlayerTurn = () => {
+		document.querySelector("#double-down").disabled = true;
+
+		if (this.playersTurn) {
+			this.Deck.deal(1, [this.Human.hand1]);
+			this.displayCard(
+				this.Human.hand1[this.Human.hand1.length - 1],
+				this.humanCardDiv
+			);
+			this.humanScore = this.getHandScore(this.Human.hand1);
+			this.humanStrings = this.getHandStrings(this.Human.hand1);
+
+			if (this.humanScore > 21 && this.countAces(this.Human.hand1) > 0) {
+				this.convertAces(this.Human.hand1);
+				this.humanScore = this.getHandScore(this.Human.hand1);
+			}
+			$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+
+			if (this.humanScore > 21) {
+				$("#announce-text").text("You busted! Try again.");
+				document.querySelector("#hit").disabled = true;
+				document.querySelector("#stand").disabled = true;
+				this.Human.chips -= this.bet;
+				this.playersTurn = false;
+				this.restartGame();
+
+				return;
+			} else if (this.humanScore === 21) {
+				this.endPlayerTurn();
+			}
+		}
+	};
+
+	main = () => {
+		// Check for naturals
+
+		this.dealerScore = this.getHandScore(this.Dealer.hand1);
+		this.dealerStrings = this.getHandStrings(this.Dealer.hand1);
+
+		if (this.humanScore === 21 && this.dealerScore !== 21) {
+			//Human got a natural
+			$("#announce-text").text("You got a natural!");
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+			let purse = this.bet * 1.5;
+			this.Human.chips += purse;
+			this.restartGame();
+			return;
+		} else if (this.dealerScore === 21 && this.humanScore !== 21) {
+			// Dealer got a natural
+			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+			$("#announce-text").text("Dealer scored a natural. Try again");
+			this.Human.chips -= this.bet;
+			this.restartGame();
+			return;
+		} else if (this.dealerScore === 21 && this.humanScore === 21) {
+			//Both got naturals
+			$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+
+			$("#announce-text").text("You both got naturals! Play again");
+			this.restartGame();
+			return;
+		}
+
+		// Check for double down
+		if (
+			this.humanScore === 9 ||
+			this.humanScore === 10 ||
+			this.humanScore === 11
+		) {
+			document.querySelector("#double-down").disabled = false;
+		}
+
+		//Double aces, reduce the first to 1 point
+		if (this.countAces(this.Human.hand1) === 2) {
+			this.Human.hand1[0].points = 1;
+			this.getHandScore(this.Human.hand1);
+			$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+		}
+		if (this.countAces(this.Dealer.hand1) === 2) {
+			this.Dealer.hand1[0].points = 1;
+			this.getHandScore(this.Dealer.hand1);
+			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+		}
+
+		//Humans turn
+
+		this.playersTurn = true;
+		document.querySelector("#hit").disabled = false;
+		document.querySelector("#stand").disabled = false;
+	};
+}
+
+const Game = new Blackjack();
+
+document.querySelector("#hit").disabled = true;
+document.querySelector("#stand").disabled = true;
+document.querySelector("#double-down").disabled = true;
+
+$("#betForm").on("submit", e => {
+	e.preventDefault();
+	Game.bet = Number($("#betInput").val());
+
+	if (Game.bet <= Game.Human.chips) {
+		$("#betText").text(`Your current bet: ${Game.bet}`);
+		$(".announcement").hide();
+		Game.start();
+	} else if (Game.Human.chips <= 0) {
+		$("#announce-text").text("You're out of doubloons!");
+
 		return;
 	} else {
-		console.log("Dealer won this round");
-		Human.chips -= bet;
-		return;
+		$("#announce-text").text("You can't bet that much!");
 	}
-};
+});
 
-// 3 rounds for testing
+// $("#saveScore").on("click", () => {
+// 	Game.running = false;
+// });
 
-for (let i = 0; i < 3; i++) {
-	main();
-}
+$("#hit").on("click", Game.runPlayerTurn);
+$("#stand").on("click", Game.endPlayerTurn);
+$("#double-down").on("click", Game.doubleDown);
