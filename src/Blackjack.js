@@ -25,11 +25,14 @@ class Blackjack {
 
 	restartGame = () => {
 		this.setChipCount();
-		$("#modal1").modal("open");
 
-		if (this.Human.chips < 50) {
-			$("#betInput").attr("min", this.Human.chips);
-		}
+		setTimeout(() => {
+			$("#modal1").modal("open");
+
+			if (this.Human.chips < 50) {
+				$("#betInput").attr("min", this.Human.chips);
+			}
+		}, 500);
 	};
 
 	getHandScore = hand => {
@@ -227,33 +230,35 @@ class Blackjack {
 		this.dealerScore = this.getHandScore(this.Dealer.hand1);
 		this.dealerStrings = this.getHandStrings(this.Dealer.hand1);
 
-		if (this.humanScore === 21 && this.dealerScore !== 21) {
-			//Human got a natural
-			$("#announce-text").text("You got a natural!");
-			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
-			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
-			let purse = this.bet * 1.5;
-			this.Human.chips += purse;
-			this.restartGame();
-			return;
-		} else if (this.dealerScore === 21 && this.humanScore !== 21) {
-			// Dealer got a natural
-			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
-			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
-			$("#announce-text").text("Dealer scored a natural. Try again");
-			this.Human.chips -= this.bet;
-			this.restartGame();
-			return;
-		} else if (this.dealerScore === 21 && this.humanScore === 21) {
-			//Both got naturals
-			$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
-			$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
-			this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+		setTimeout(() => {
+			if (this.humanScore === 21 && this.dealerScore !== 21) {
+				//Human got a natural
+				$("#announce-text").text("You got a natural!");
+				$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+				this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+				let purse = this.bet * 1.5;
+				this.Human.chips += purse;
+				this.restartGame();
+				return;
+			} else if (this.dealerScore === 21 && this.humanScore !== 21) {
+				// Dealer got a natural
+				this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
+				$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+				$("#announce-text").text("Dealer scored a natural. Try again");
+				this.Human.chips -= this.bet;
+				this.restartGame();
+				return;
+			} else if (this.dealerScore === 21 && this.humanScore === 21) {
+				//Both got naturals
+				$(".humanHandScore").text(`Hand Score: ${this.humanScore}`);
+				$(".dealerHandScore").text(`Hand Score: ${this.dealerScore}`);
+				this.displayCard(this.Dealer.hand1[1], this.dealerCardDiv);
 
-			$("#announce-text").text("You both got naturals! Play again");
-			this.restartGame();
-			return;
-		}
+				$("#announce-text").text("You both got naturals! Play again");
+				this.restartGame();
+				return;
+			}
+		}, 1000);
 
 		// Check for double down
 		if (
