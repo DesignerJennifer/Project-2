@@ -1,153 +1,157 @@
 /* full Background image - wood */
 body {
-  background-image: url("./Images/woodBackground_table.jpg");
-  background-repeat: repeat;
+	background-image: url("./Images/woodBackground_table.jpg");
+	background-repeat: repeat;
 }
 
 /* Logo in nav bar */
 .blackjackLogo {
-  height: 50px;
-  margin: 10px;
-  object-fit: contain;
+	height: 50px;
+	margin: 10px;
+	object-fit: contain;
 }
 
 /* game matt - partchment paper */
 .tableMattDiv {
-  margin-top: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 30px;
-  width: 1180px;
-  height: 620px;
+	margin-top: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 30px;
+	width: 1180px;
+	height: 620px;
 }
 
 #tableMatt {
-  background-image: url("./Images/table_Matt_1180px.png");
-  background-repeat: no-repeat;
-  background-size: 1100px, 500px;
-  /* width: 1100px;
+	background-image: url("./Images/table_Matt_1180px.png");
+	background-repeat: no-repeat;
+	background-size: 1100px, 500px;
+	/* width: 1100px;
   height: 500px; */
 }
 
 .displayDeck {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .dealerCardDiv {
-  /* align-content: center; */
-  margin: auto;
+	/* align-content: center; */
+	margin: auto;
 }
 
 /* style for the current bet display */
 .bets {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 800;
-  font-size: 1em;
-  align-content: flex-end;
+	font-family: "Walter Turncoat", cursive;
+	font-weight: 800;
+	font-size: 1em;
+	align-content: flex-end;
 }
 
 #doubloons {
-  width: 40px;
+	width: 40px;
 }
 
 #Human {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 800;
-  font-size: 1.5em;
+	font-family: "Walter Turncoat", cursive;
+	font-weight: 800;
+	font-size: 1.5em;
 }
 
 #Dealer {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 800;
-  font-size: 1.5em;
-  margin-top: 15px;
+	font-family: "Walter Turncoat", cursive;
+	font-weight: 800;
+	font-size: 1.5em;
+	margin-top: 15px;
 }
 
 #Human {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 800;
-  font-size: 1.5em;
-  margin-top: 15px;
+	font-family: "Walter Turncoat", cursive;
+	font-weight: 800;
+	font-size: 1.5em;
+	margin-top: 15px;
 }
 
 .body-font {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 600;
-  font-size: 1em;
-  line-height: 0.5em;
+	font-family: "Walter Turncoat", cursive;
+	font-weight: 600;
+	font-size: 1em;
+	line-height: 0.5em;
 }
 
 .highScore {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 600;
-  font-size: 2em;
-  line-height: 0.5em;
+	font-family: "Walter Turncoat", cursive;
+	font-weight: 600;
+	font-size: 2em;
+	line-height: 0.5em;
 }
 
 .ol {
-  list-style: none;
-  padding-left: 0;
+	list-style: none;
+	padding-left: 0;
 }
 
 .playerButtons {
-  text-decoration: none;
-  color: #fff;
-  background-color: #bf360c;
-  text-align: center;
-  letter-spacing: 0.5px;
-  -webkit-transition: background-color #d84315;
-  transition: background-color #d84315;
-  cursor: pointer;
+	text-decoration: none;
+	color: #fff;
+	background-color: #bf360c;
+	text-align: center;
+	letter-spacing: 0.5px;
+	-webkit-transition: background-color #d84315;
+	transition: background-color #d84315;
+	cursor: pointer;
 }
 
 .homePageButtons {
-  text-decoration: none;
-  color: #fff;
-  background-color: #bf360c;
-  text-align: center;
-  letter-spacing: 0.5px;
-  -webkit-transition: background-color #d84315;
-  transition: background-color #d84315;
-  cursor: pointer;
-  width: 150px;
+	text-decoration: none;
+	color: #fff;
+	background-color: #bf360c;
+	text-align: center;
+	letter-spacing: 0.5px;
+	-webkit-transition: background-color #d84315;
+	transition: background-color #d84315;
+	cursor: pointer;
+	width: 150px;
 }
 
 .hpbtndiv {
-  margin-top: 50px;
+	margin-top: 50px;
 }
 
 .scoreSave {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .score {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 600;
-  font-size: 1em;
+	font-family: "Walter Turncoat", cursive;
+	font-weight: 600;
+	font-size: 1em;
 }
 
 .logoAnimate {
-  margin-top: 100px;
-  animation-duration: 2s;
-  animation-iteration-count: initial;
+	margin-top: 100px;
+	animation-duration: 2s;
+	animation-iteration-count: initial;
 }
 
 #startbtn {
-  text-decoration: none;
-  color: #fff;
-  background-color: #bf360c;
-  text-align: center;
-  letter-spacing: 0.5px;
-  -webkit-transition: background-color #d84315;
-  transition: background-color #d84315;
-  cursor: pointer;
-  width: 150px;
+	text-decoration: none;
+	color: #fff;
+	background-color: #bf360c;
+	text-align: center;
+	letter-spacing: 0.5px;
+	-webkit-transition: background-color #d84315;
+	transition: background-color #d84315;
+	cursor: pointer;
+	width: 150px;
+}
+
+.announcement {
+	padding-top: 3em;
 }
 
 /* Not in use */

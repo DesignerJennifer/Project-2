@@ -25,8 +25,8 @@ class Blackjack {
 
 	restartGame = () => {
 		this.setChipCount();
-		$(".announcement").show();
-		document.querySelector("#betForm").focus();
+		$("#modal1").modal("open");
+
 		if (this.Human.chips < 50) {
 			$("#betInput").attr("min", this.Human.chips);
 		}
@@ -284,30 +284,32 @@ class Blackjack {
 	};
 }
 
-const Game = new Blackjack();
-
-document.querySelector("#hit").disabled = true;
-document.querySelector("#stand").disabled = true;
-document.querySelector("#double-down").disabled = true;
-
-$("#betForm").on("submit", e => {
-	e.preventDefault();
-	Game.bet = Number($("#betInput").val());
-
-	if (Game.bet <= Game.Human.chips) {
-		$("#betText").text(`Your current bet: ${Game.bet}`);
-		$(".announcement").hide();
-		Game.start();
-	} else if (Game.Human.chips <= 0) {
-		$("#announce-text").text("You're out of doubloons!");
-
-		return;
-	} else {
-		$("#announce-text").text("You can't bet that much!");
-	}
-});
-
 $(document).ready(() => {
+	const Game = new Blackjack();
+
+	document.querySelector("#hit").disabled = true;
+	document.querySelector("#stand").disabled = true;
+	document.querySelector("#double-down").disabled = true;
+
+	$("#betForm").on("submit", e => {
+		e.preventDefault();
+		Game.bet = Number($("#betInput").val());
+
+		if (Game.bet <= Game.Human.chips) {
+			$("#betText").text(`Your current bet: ${Game.bet}`);
+			$("#modal1").modal("close");
+			Game.start();
+		} else if (Game.Human.chips <= 0) {
+			$("#announce-text").text("You're out of doubloons!");
+
+			return;
+		} else {
+			$("#announce-text").text("You can't bet that much!");
+		}
+	});
+	$(".modal").modal();
+
+	$("#modal1").modal("open");
 	$("#hit").on("click", Game.runPlayerTurn);
 	$("#stand").on("click", Game.endPlayerTurn);
 	$("#double-down").on("click", Game.doubleDown);

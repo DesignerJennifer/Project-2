@@ -19,7 +19,6 @@
 		/>
 
 		<!-- Materialize -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 		<!-- jquery -->
 		<script
@@ -60,15 +59,6 @@
 
 			<!-- First row with Dealer name, hand score, hand and current bet -->
 			<div class="container">
-				<div class="container">
-					<div class="row center announcement">
-						<h1 id="announce-text">Place your bet!</h1>
-						<form id="betForm">
-							<input type="number" id="betInput" value="50" min="50" />
-							<input type="submit" value="Place Bet" />
-						</form>
-					</div>
-				</div>
 				<div class="row">
 					<!-- Dealer name and hand score -->
 					<div class="col s3">
@@ -136,7 +126,7 @@
 						<p id="chipCount"></p>
 
 						<p id="betText">Current Bet: 000</p>
-						<button id="double-down">Double Down</button>
+						<button id="double-down" class="btn">Double Down</button>
 					</div>
 
 					<!-- End of third row  -->
@@ -149,7 +139,26 @@
 			<!-- Script file links -->
 		</div>
 
+		<!-- Modal Structure -->
+		<div id="modal1" class="modal">
+			<div class="container">
+				<div class="row center announcement">
+					<h1 id="announce-text">Place your bet!</h1>
+					<form id="betForm">
+						<input type="number" id="betInput" value="50" min="50" />
+						<input
+							class="waves-effect waves-green btn"
+							type="submit"
+							value="Place Bet"
+						/>
+					</form>
+				</div>
+			</div>
+		</div>
+
 		<!-- Bundle script file -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 		<script src="./bundle.js"></script>
 	</body>
 </html>
