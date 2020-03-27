@@ -31,11 +31,28 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <title>Blackjack</title>
   </head>
 
   <body>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Enter Your Name</h4>
+        <input type="text" id="fname" name="fname" /><br />
+      </div>
+      <div class="modal-footer">
+        <a
+          href="play.html"
+          class="modal-close waves-effect waves-green btn-flat"
+          >PLAY!</a
+        >
+      </div>
+    </div>
+
     <!-- Background matt image -->
     <div class="tableMattDiv" id="tableMatt">
       <!-- Page content -->
@@ -52,28 +69,13 @@
         <!-- Second Row Button links -->
 
         <div class="row center hpbtndiv">
-        
-          <!-- Modal Trigger -->
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-          <div id="modal1" class="modal open" tabindex="0" style="z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);">
-          <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p></p>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-          </div>
-        </div>
-        
-
-  <!-- Modal Structure -->
-  
-
-    
-
           <!-- This will trigger a modal that tells the player how to play Blackjack -->
+
+          <!-- Modal Trigger -->
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal1"
+            >Modal</a
+          >
+
           <p>
             <a href="*" class="btn homePageButtons" id="hit">RULES</a>
             <a href="scores.html" class="btn homePageButtons" id="hit"
@@ -82,13 +84,12 @@
           </p>
         </div>
       </div>
-
-      
-      </div>
     </div>
 
     <script>
-   
+      $(document).ready(function() {
+        $(".modal").modal();
+      });
     </script>
   </body>
 </html>
