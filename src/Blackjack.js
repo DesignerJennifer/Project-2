@@ -71,7 +71,9 @@ class Blackjack {
 	};
 	displayCard = (card, divToAppend) => {
 		const cardToAdd = `
-		<img class="cardImage" src=${this.imageDict[card.toShortDisplayString()]}>`;
+		<img class="cardImage fade-in" src=${
+			this.imageDict[card.toShortDisplayString()]
+		}>`;
 		$(divToAppend).append(cardToAdd);
 	};
 
