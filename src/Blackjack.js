@@ -307,10 +307,8 @@ $("#betForm").on("submit", e => {
 	}
 });
 
-// $("#saveScore").on("click", () => {
-// 	Game.running = false;
-// });
-
-$("#hit").on("click", Game.runPlayerTurn);
-$("#stand").on("click", Game.endPlayerTurn);
-$("#double-down").on("click", Game.doubleDown);
+$(document).ready(() => {
+	$("#hit").on("click", Game.runPlayerTurn);
+	$("#stand").on("click", Game.endPlayerTurn);
+	$("#double-down").on("click", Game.doubleDown);
+});
