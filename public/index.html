@@ -26,56 +26,69 @@
     <link rel="stylesheet" type="text/css" href="styleshee.css" />
 
     <!-- jquery -->
-     <script
+    <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
-    
-    <title>Blackjack</title>
 
+    <title>Blackjack</title>
   </head>
 
   <body>
-
     <!-- Background matt image -->
     <div class="tableMattDiv" id="tableMatt">
-    
       <!-- Page content -->
-    <div class="container">
-
-      <!-- Fist Row Logo animation -->
-      <div class="row">
-        <img
-          src="./Images/table_Matt_Large.svg"
-          class="logoAnimate fadeInDown"
-          alt="BlackJack Title"
-        />
+      <div class="container">
+        <!-- Fist Row Logo animation -->
+        <div class="row">
+          <img
+            src="./Images/table_Matt_Large.svg"
+            class="logoAnimate fadeInDown"
+            alt="BlackJack Title"
+          />
         </div>
 
         <!-- Second Row Button links -->
 
         <div class="row center hpbtndiv">
-          <!-- This should also trigger a modal for the user to put in their name -->
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1" >START</a>
-          
+        
+          <!-- Modal Trigger -->
+          <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+          <div id="modal1" class="modal open" tabindex="0" style="z-index: 1003; display: block; opacity: 1; top: 10%; transform: scaleX(1) scaleY(1);">
+          <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Disagree</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          </div>
+        </div>
+        
+
+  <!-- Modal Structure -->
+  
+
+    
+
           <!-- This will trigger a modal that tells the player how to play Blackjack -->
-         <p><a href="*" class="btn homePageButtons" id="hit">RULES</a>
-          <a href="scores.html" class="btn homePageButtons" id="hit">HIGH SCORES</a>
-          </p> 
+          <p>
+            <a href="*" class="btn homePageButtons" id="hit">RULES</a>
+            <a href="scores.html" class="btn homePageButtons" id="hit"
+              >HIGH SCORES</a
+            >
+          </p>
         </div>
       </div>
 
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4>Enter your Name</h4>
+      
+      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
 
- 
-  <!-- <script src="scripts.js"></script> -->
+    <script>
+   
+    </script>
   </body>
 </html>
