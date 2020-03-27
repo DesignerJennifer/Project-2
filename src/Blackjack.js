@@ -258,6 +258,8 @@ class Blackjack {
 				this.restartGame();
 				return;
 			}
+			document.querySelector("#hit").disabled = false;
+			document.querySelector("#stand").disabled = false;
 		}, 1000);
 
 		// Check for double down
@@ -284,8 +286,6 @@ class Blackjack {
 		//Humans turn
 
 		this.playersTurn = true;
-		document.querySelector("#hit").disabled = false;
-		document.querySelector("#stand").disabled = false;
 	};
 }
 
