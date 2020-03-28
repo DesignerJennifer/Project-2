@@ -41,13 +41,9 @@
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
       <div class="modal-content">
-        <h4>Enter Your Name</h4>
+        <h4 class="modalHeaddings">Enter Your Name</h4>
         <input type="text" id="fname" name="fname" /><br />
-      </div>
-      <div class="modal-footer grey darken-4">
-        <a
-          href="play.html"
-          class="modal-close waves-effect waves-green btn-flat"
+        <a href="play.html" id="startbtn" class="btn red darken-4 waves-red"
           >PLAY!</a
         >
       </div>
@@ -72,13 +68,15 @@
           <!-- This will trigger a modal that tells the player how to play Blackjack -->
 
           <!-- Modal Trigger -->
-          <a class="waves-effect waves-light btn modal-trigger" href="#modal1"
-            >Modal</a
+          <a class="btn red darken-4 waves-red modal-trigger" href="#modal1"
+            >START</a
           >
 
           <p>
-            <a href="rules.html" class="btn homePageButtons" id="hit">RULES</a>
-            <a href="scores.html" class="btn homePageButtons" id="hit"
+            <a href="rules.html" class="btn red darken-4 waves-red" id="hit"
+              >RULES</a
+            >
+            <a href="scores.html" class="btn red darken-4 waves-red" id="hit"
               >HIGH SCORES</a
             >
           </p>

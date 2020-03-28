@@ -109,6 +109,7 @@ body {
   -webkit-transition: background-color #d84315;
   transition: background-color #d84315;
   cursor: pointer;
+  width: 150px;
 }
 
 .homePageButtons {
