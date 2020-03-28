@@ -8,8 +8,8 @@ var LocalStrategy = require("passport-local").Strategy;
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
+    host: "r4919aobtbi97j46.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "ymfk4ayks83sfpim",
     password: "mclark1250"
 });
 
