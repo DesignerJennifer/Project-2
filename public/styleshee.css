@@ -53,11 +53,11 @@ body {
   width: 40px;
 }
 
-#Human {
-  font-family: "Walter Turncoat", cursive;
-  font-weight: 800;
-  font-size: 1.5em;
-}
+/* #Human {
+	font-family: "Walter Turncoat", cursive;
+	font-weight: 800;
+	font-size: 1.5em;
+} */
 
 #Dealer {
   font-family: "Walter Turncoat", cursive;
@@ -85,6 +85,14 @@ body {
   font-weight: 600;
   font-size: 2em;
   line-height: 0.5em;
+}
+
+.modalHeaddings {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 500;
+  font-size: 4em;
+  line-height: 0.5em;
+  color: wheat;
 }
 
 .ol {
@@ -150,6 +158,86 @@ body {
   width: 150px;
 }
 
+div#modal1 {
+  background-image: url("./Images/woodBackground_table.jpg");
+  background-position: center;
+  background-size: contain;
+  padding-top: 30px;
+  overflow: unset;
+  min-height: 200px;
+  border-radius: 1em;
+  align-content: center;
+}
+
+input {
+  color: white;
+  margin: auto;
+  background-color: white, 30%;
+  border-bottom: transparent;
+}
+
+form {
+  border-color: transparent;
+}
+
+.announcement {
+  padding-top: 3em;
+}
+.cardImage {
+  opacity: 1;
+}
+
+.fade-in {
+  animation: fadeIn ease 1.5s;
+  -webkit-animation: fadeIn ease 1.5s;
+  -moz-animation: fadeIn ease 1.5s;
+  -o-animation: fadeIn ease 1.5s;
+  -ms-animation: fadeIn ease 1.5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /* Not in use */
 /* 
 .card__header-title {

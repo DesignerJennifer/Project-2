@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Blackjack</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blackjack</title>
 
-		<!-- Materialize CSS Library -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-		/>
+    <!-- Materialize CSS Library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
-		<!-- Google Font -->
-		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Walter+Turncoat&display=swap"
-		/>
+    <!-- Google Font -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Walter+Turncoat&display=swap"
+    />
 
-		<!-- Materialize -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-		<!-- jquery -->
-		<script
-			src="https://code.jquery.com/jquery-3.4.1.min.js"
-			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-			crossorigin="anonymous"
-		></script>
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
 
-		<!-- Our stylesheet -->
-		<link rel="stylesheet" type="text/css" href="styleshee.css" />
+    <!-- Our stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styleshee.css" />
 
-		<title>Blackjack</title>
-	</head>
+    <title>Blackjack</title>
+  </head>
 
-	<body>
-		<!-- Navigation Bar -->
-		<nav>
-			<div class="nav-wrapper grey darken-4">
-				<img src="Images/BlackJack_Title_REV.svg" class="blackjackLogo right" />
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<li><a href="scores.html">Scores</a></li>
-					<li><a href="index.html">Home</a></li>
-				</ul>
-			</div>
-		</nav>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="nav-wrapper grey darken-4">
+        <img src="Images/BlackJack_Title_REV.svg" class="blackjackLogo right" />
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="scores.html">Scores</a></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+    </nav>
 
-		<!-- Background matt image -->
-		<div class="col s12 tableMattDiv" id="tableMatt">
-			<!-- modal for placing bets -->
-			<!-- <div id="modal1" class="modal">
+    <!-- Background matt image -->
+    <div class="col s12 tableMattDiv" id="tableMatt">
+      <!-- modal for placing bets -->
+      <!-- <div id="modal1" class="modal">
             <div class="modal-content">
                 <h4>Place Your Bet!</h4>
             <form id="betForm">
@@ -58,98 +58,98 @@
 			</form>
         </div> -->
 
-			<!-- First row with Dealer name, hand score, hand and current bet -->
-			<div class="container">
-				<div class="container">
-					<div class="row center announcement">
-						<h1 id="announce-text">Place your bet!</h1>
-						<form id="betForm">
-							<input type="number" id="betInput" value="50" min="50" />
-							<input type="submit" value="Place Bet" />
-						</form>
-					</div>
-				</div>
-				<div class="row">
-					<!-- Dealer name and hand score -->
-					<div class="col s3">
-						<p id="Dealer">DealerName</p>
-						<p class="dealerHandScore body-font">Hand Score: 00</p>
-					</div>
+      <!-- First row with Dealer name, hand score, hand and current bet -->
+      <div class="container">
+        <div class="container">
+          <div class="row center announcement">
+            <h1 id="announce-text">Place your bet!</h1>
+            <form id="betForm">
+              <input type="number" id="betInput" value="50" min="50" />
+              <input type="submit" value="Place Bet" />
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Dealer name and hand score -->
+          <div class="col s3">
+            <p id="Dealer">DealerName</p>
+            <p class="dealerHandScore body-font">Hand Score: 00</p>
+          </div>
 
-					<!-- The dealer's 1st card will be rendered here -->
-					<div class="col s4 dealerCardDiv">
-						<div class="renderCard dealerHand">
-							<!-- for placement only -->
-						</div>
-					</div>
+          <!-- The dealer's 1st card will be rendered here -->
+          <div class="col s4 dealerCardDiv">
+            <div class="renderCard dealerHand">
+              <!-- for placement only -->
+            </div>
+          </div>
 
-					<!-- The dealer's 2nd card will be rendered here -->
+          <!-- The dealer's 2nd card will be rendered here -->
 
-					<!-- The dealer's bet will be rendered here -->
-					<div class="col s3 right bets">
-						<!-- <p id="dealerBet">
+          <!-- The dealer's bet will be rendered here -->
+          <div class="col s3 right bets">
+            <!-- <p id="dealerBet">
 							<img src="Images/doubloons.png" id="doubloons" />
 						</p>
 
 						<p>Current Bet: 000</p>
 						<p>Remaining Money: 000</p> -->
-					</div>
+          </div>
 
-					<!-- End of first row  -->
-				</div>
+          <!-- End of first row  -->
+        </div>
 
-				<!-- Second row with image of deck -->
-				<div class="row">
-					<!-- The deck -->
-					<div class="displayDeck" style="width: 122.5px; height: 150px;">
-						<img src="Images/skull_Card_back.png" />
-					</div>
+        <!-- Second row with image of deck -->
+        <div class="row">
+          <!-- The deck -->
+          <div class="displayDeck" style="width: 122.5px; height: 150px;">
+            <img src="Images/skull_Card_back.png" />
+          </div>
 
-					<!-- End of Second row  -->
-				</div>
+          <!-- End of Second row  -->
+        </div>
 
-				<!-- Third row with Dealer name, hand score, hand and current bet -->
-				<div class="row">
-					<!-- Human name and hand score -->
-					<div class="col s3">
-						<p id="Human">HumanName</p>
-						<p class="humanHandScore body-font">Hand Score: 00</p>
-						<p>
-							<button class="btn playerButtons" id="hit">Hit</button>
-							<button class="btn playerButtons" id="stand">Stand</button>
-						</p>
-					</div>
+        <!-- Third row with Dealer name, hand score, hand and current bet -->
+        <div class="row">
+          <!-- Human name and hand score -->
+          <div class="col s3">
+            <p id="Human">HumanName</p>
+            <p class="humanHandScore body-font">Hand Score: 00</p>
+            <p>
+              <button class="btn playerButtons" id="hit">Hit</button>
+              <button class="btn playerButtons" id="stand">Stand</button>
+            </p>
+          </div>
 
-					<!-- The Human's 1st card will be rendered here -->
-					<div class="col s4 HumanCardDiv">
-						<div class="renderCard humanHand">
-							<!-- for placement only -->
-						</div>
-					</div>
+          <!-- The Human's 1st card will be rendered here -->
+          <div class="col s4 HumanCardDiv">
+            <div class="renderCard humanHand">
+              <!-- for placement only -->
+            </div>
+          </div>
 
-					<!-- The dealer's bet will be rendered here -->
-					<div class="col s3 right bets">
-						<p id="dealerBet"></p>
-						<p id="dealerBet">
-							<img src="Images/doubloons.png" id="doubloons" />
-						</p>
-						<p id="chipCount"></p>
+          <!-- The dealer's bet will be rendered here -->
+          <div class="col s3 right bets">
+            <p id="dealerBet"></p>
+            <p id="dealerBet">
+              <img src="Images/doubloons.png" id="doubloons" />
+            </p>
+            <p id="chipCount"></p>
 
-						<p id="betText">Current Bet: 000</p>
-						<button id="double-down">Double Down</button>
-					</div>
+            <p id="betText">Current Bet: 000</p>
+            <button id="double-down">Double Down</button>
+          </div>
 
-					<!-- End of third row  -->
-				</div>
+          <!-- End of third row  -->
+        </div>
 
-				<div class="row">
-					<!-- <a id="saveScore" class="btn playerButtons" id="hit">SAVE SCORE</a> -->
-				</div>
-			</div>
-			<!-- Script file links -->
-		</div>
+        <div class="row">
+          <!-- <a id="saveScore" class="btn playerButtons" id="hit">SAVE SCORE</a> -->
+        </div>
+      </div>
+      <!-- Script file links -->
+    </div>
 
-		<!-- Bundle script file -->
-		<script src="./bundle.js"></script>
-	</body>
+    <!-- Bundle script file -->
+    <script src="./bundle.js"></script>
+  </body>
 </html>
