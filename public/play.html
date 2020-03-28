@@ -47,43 +47,22 @@
 
     <!-- Background matt image -->
     <div class="col s12 tableMattDiv" id="tableMatt">
-      <!-- modal for placing bets -->
-      <!-- <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4>Place Your Bet!</h4>
-            <form id="betForm">
-				<input type="number" id="betInput" value="50" min="50" />
-				<input type="submit" value="Place Bet" />
-			</form>
-        </div> -->
-
       <!-- First row with Dealer name, hand score, hand and current bet -->
       <div class="container">
         <div class="row">
           <!-- Dealer name and hand score -->
           <div class="col s3">
-            <p id="Dealer">DealerName</p>
+            <p id="Dealer">Dealer</p>
             <p class="dealerHandScore body-font">Hand Score: 00</p>
           </div>
 
           <!-- The dealer's 1st card will be rendered here -->
           <div class="col s5 dealerCardDiv">
-            <div class="renderCard dealerHand">
-              <!-- for placement only -->
-            </div>
+            <div class="renderCard dealerHand"></div>
           </div>
-
-          <!-- The dealer's 2nd card will be rendered here -->
 
           <!-- The dealer's bet will be rendered here -->
-          <div class="col s3 right bets">
-            <!-- <p id="dealerBet">
-							<img src="Images/doubloons.png" id="doubloons" />
-						</p>
-
-						<p>Current Bet: 000</p>
-						<p>Remaining Money: 000</p> -->
-          </div>
+          <div class="col s3 right bets"></div>
 
           <!-- End of first row  -->
         </div>
@@ -116,9 +95,7 @@
 
           <!-- The Human's 1st card will be rendered here -->
           <div class="col s5 HumanCardDiv">
-            <div class="renderCard humanHand">
-              <!-- for placement only -->
-            </div>
+            <div class="renderCard humanHand"></div>
           </div>
 
           <!-- The dealer's bet will be rendered here -->
@@ -138,17 +115,14 @@
           <!-- End of third row  -->
         </div>
 
-        <div class="row">
-          <!-- <a id="saveScore" class="btn playerButtons" id="hit">SAVE SCORE</a> -->
-        </div>
+        <div class="row"></div>
       </div>
-      <!-- Script file links -->
     </div>
 
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
       <div class="container">
-        <div class="row center announcement">
+        <div class="row center modalHeaddings">
           <h1 id="announce-text">Place your bet!</h1>
           <form id="betForm">
             <input type="number" id="betInput" value="50" min="50" />
