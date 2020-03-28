@@ -26,56 +26,76 @@
     <link rel="stylesheet" type="text/css" href="styleshee.css" />
 
     <!-- jquery -->
-     <script
+    <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
-    
-    <title>Blackjack</title>
 
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <title>Blackjack</title>
   </head>
 
   <body>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4 class="row center modalHeaddings">Enter Your Name</h4>
+        <input type="text" id="fname" name="fname" />
+        <br /><br />
+        <div class="row center">
+          <a
+            href="play.html"
+            id="startbtn"
+            class="center btn red darken-4 waves-red"
+            >PLAY!</a
+          >
+        </div>
+      </div>
+    </div>
 
     <!-- Background matt image -->
     <div class="tableMattDiv" id="tableMatt">
-    
       <!-- Page content -->
-    <div class="container">
-
-      <!-- Fist Row Logo animation -->
-      <div class="row">
-        <img
-          src="./Images/table_Matt_Large.svg"
-          class="logoAnimate fadeInDown"
-          alt="BlackJack Title"
-        />
+      <div class="container">
+        <!-- Fist Row Logo animation -->
+        <div class="row">
+          <img
+            src="./Images/table_Matt_Large.svg"
+            class="logoAnimate fadeInDown"
+            alt="BlackJack Title"
+          />
         </div>
 
         <!-- Second Row Button links -->
 
         <div class="row center hpbtndiv">
-          <!-- This should also trigger a modal for the user to put in their name -->
-          <a href="play.html" class="waves-effect waves-light btn modal-trigger" href="#modal1" >START</a>
-          
+
           <!-- This will trigger a modal that tells the player how to play Blackjack -->
-         <p><a href="rules.html" class="btn homePageButtons" id="hit">RULES</a>
-          <a href="scores.html" class="btn homePageButtons" id="hit">HIGH SCORES</a>
-          </p> 
+
+          <!-- Modal Trigger -->
+          <a class="btn red darken-4 waves-red modal-trigger" href="#modal1"
+            >START</a
+          >
+
+          <p>
+            <a href="rules.html" class="btn red darken-4 waves-red" id="hit"
+              >RULES</a
+            >
+            <a href="scores.html" class="btn red darken-4 waves-red" id="hit"
+              >HIGH SCORES</a
+            >
+          </p>
         </div>
       </div>
-
-        <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4>Enter your Name</h4>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
 
- 
-  <!-- <script src="scripts.js"></script> -->
+    <script>
+      $(document).ready(function() {
+        $(".modal").modal();
+      });
+    </script>
   </body>
 </html>

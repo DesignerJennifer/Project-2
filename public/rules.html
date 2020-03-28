@@ -21,6 +21,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Walter+Turncoat&display=swap"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:500&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- jquery -->
     <script
@@ -29,18 +33,16 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <!-- Our stylesheet -->
     <link rel="stylesheet" type="text/css" href="styleshee.css" />
 
-    
     <title>Blackjack</title>
-
   </head>
 
   <body>
-
-    
-
     <!-- Navigation Bar -->
     <nav>
       <div class="nav-wrapper grey darken-4">
@@ -53,65 +55,174 @@
     </nav>
 
     <!-- Background matt image -->
-    <div class="tableMattDiv" id="tableMatt">
-    
+    <div class="rulesMattDiv" id="rulesMatt">
       <!-- Page content -->
-    <div class="container">
+      <div class="container">
+        <!-- Fist Row Logo animation -->
+        <div class="row">
+          <img
+            src="./Images/table_Matt_Large.svg"
+            class="logoAnimate fadeInDown"
+            alt="BlackJack Title"
+          />
+        </div>
+        <!-- Instruction -->
+        <div class="row col s12">
+          <p class="highScore">OBJECT OF THE GAME</p>
+          <p class="rules-body">
+            Each participant attempts to beat the dealer by getting a count as
+            close to 21 as possible, without going over 21.
+          </p>
 
-      <!-- Fist Row Logo animation -->
-      <div class="row">
-        <img
-          src="./Images/table_Matt_Large.svg"
-          class="logoAnimate fadeInDown"
-          alt="BlackJack Title"
-        />
+          <p class="highScore">CARD VALUES/SCORING</p>
+          <p class="rules-body">
+            It is up to each individual player if an ace is worth 1 or 11. Face
+            cards are 10 and any other card is its pip value.
+          </p>
+
+          <p class="highScore">BETTING</p>
+          <p class="rules-body">
+            Before the deal begins, each player places a bet, in chips, in front
+            of them in the designated area. Minimum and maximum limits are
+            established on the betting, and the general limits are from $2 to
+            $500.
+          </p>
+
+          <p class="highScore">THE DEAL</p>
+          <p class="rules-body">
+            When all the players have placed their bets, the dealer gives one
+            card face up to each player in rotation clockwise, and then one card
+            face up to themselves. Another round of cards is then dealt face up
+            to each player, but the dealer takes the second card face down.
+            Thus, each player except the dealer receives two cards face up, and
+            the dealer receives one card face up and one card face down. (In
+            some games, played with only one deck, the players' cards are dealt
+            face down and they get to hold them. Today, however, virtually all
+            Blackjack games feature the players' cards dealt face up on the
+            condition that no player may touch any cards.)
+          </p>
+
+          <p class="highScore">NATURALS</p>
+          <p class="rules-body">
+            If a player's first two cards are an ace and a "ten-card" (a picture
+            card or 10), giving a count of 21 in two cards, this is a natural or
+            "blackjack." If any player has a natural and the dealer does not,
+            the dealer immediately pays that player one and a half times the
+            amount of their bet. If the dealer has a natural, they immediately
+            collect the bets of all players who do not have naturals, (but no
+            additional amount). If the dealer and another player both have
+            naturals, the bet of that player is a stand-off (a tie), and the
+            player takes back his chips.
+          </p>
+          <p class="rules-body">
+            If the dealer's face-up card is a ten-card or an ace, they look at
+            their face-down card to see if the two cards make a natural. If the
+            face-up card is not a ten-card or an ace, they do not look at the
+            face-down card until it is the dealer's turn to play.
+          </p>
+
+          <p class="highScore">THE PLAY</p>
+          <p class="rules-body">
+            The player to the left goes first and must decide whether to "stand"
+            (not ask for another card) or "hit" (ask for another card in an
+            attempt to get closer to a count of 21, or even hit 21 exactly).
+            Thus, a player may stand on the two cards originally dealt to them,
+            or they may ask the dealer for additional cards, one at a time,
+            until deciding to stand on the total (if it is 21 or under), or goes
+            "bust" (if it is over 21). In the latter case, the player loses and
+            the dealer collects the bet wagered. The dealer then turns to the
+            next player to their left and serves them in the same manner.
+          </p>
+          <p class="rules-body">
+            The combination of an ace with a card other than a ten-card is known
+            as a "soft hand," because the player can count the ace as a 1 or 11,
+            and either draw cards or not. For example with a "soft 17" (an ace
+            and a 6), the total is 7 or 17. While a count of 17 is a good hand,
+            the player may wish to draw for a higher total. If the draw creates
+            a bust hand by counting the ace as an 11, the player simply counts
+            the ace as a 1 and continues playing by standing or "hitting"
+            (asking the dealer for additional cards, one at a time).
+          </p>
+
+          <p class="highScore">THE DEALER'S PLAY</p>
+          <p class="rules-body">
+            When the dealer has served every player, the dealers face-down card
+            is turned up. If the total is 17 or more, it must stand. If the
+            total is 16 or under, they must take a card. The dealer must
+            continue to take cards until the total is 17 or more, at which point
+            the dealer must stand. If the dealer has an ace, and counting it as
+            11 would bring the total to 17 or more (but not over 21), the dealer
+            must count the ace as 11 and stand. The dealer's decisions, then,
+            are automatic on all plays, whereas the player always has the option
+            of taking one or more cards.
+          </p>
+
+          <p class="highScore">SIGNALING INTENTIONS</p>
+          <p class="rules-body">
+            When a player's turn comes, they can say "Hit" or can signal for a
+            card by scratching the table with a finger or two in a motion toward
+            themselves, or they can wave their hand in the same motion that
+            would say to someone "Come here!" When the player decides to stand,
+            they can say "Stand" or "No more," or can signal this intention by
+            moving their hand sideways, palm down and just above the table.
+          </p>
+
+          <p class="highScore">DOUBLING DOWN</p>
+          <p class="rules-body">
+            Another option open to the player is doubling their bet when the
+            original two cards dealt total 9, 10, or 11. When the player's turn
+            comes, they place a bet equal to the original bet, and the dealer
+            gives the player just one card, which is placed face down and is not
+            turned up until the bets are settled at the end of the hand. With
+            two fives, the player may split a pair, double down, or just play
+            the hand in the regular way. Note that the dealer does not have the
+            option of splitting or doubling down.
+          </p>
+
+          <p class="highScore">BASIC STRATEGY</p>
+          <p class="rules-body">
+            Winning tactics in Blackjack require that the player play each hand
+            in the optimum way, and such strategy always takes into account what
+            the dealer's upcard is. When the dealer's upcard is a good one, a 7,
+            8, 9, 10-card, or ace for example, the player should not stop
+            drawing until a total of 17 or more is reached. When the dealer's
+            upcard is a poor one, 4, 5, or 6, the player should stop drawing as
+            soon as he gets a total of 12 or higher. The strategy here is never
+            to take a card if there is any chance of going bust. The desire with
+            this poor holding is to let the dealer hit and hopefully go over 21.
+            Finally, when the dealer's up card is a fair one, 2 or 3, the player
+            should stop with a total of 13 or higher.
+          </p>
+          <p class="rules-body">
+            With a soft hand, the general strategy is to keep hitting until a
+            total of at least 18 is reached. Thus, with an ace and a six (7 or
+            17), the player would not stop at 17, but would hit.
+          </p>
+          <p class="rules-body">
+            The basic strategy for doubling down is as follows: With a total of
+            11, the player should always double down. With a total of 10, he
+            should double down unless the dealer shows a ten-card or an ace.
+            With a total of 9, the player should double down only if the
+            dealer's card is fair or poor (2 through 6).
+          </p>
+          <p class="rules-body">
+            For splitting, the player should always split a pair of aces or 8s;
+            identical ten-cards should not be split, and neither should a pair
+            of 5s, since two 5s are a total of 10, which can be used more
+            effectively in doubling down. A pair of 4s should not be split
+            either, as a total of 8 is a good number to draw to. Generally, 2s,
+            3s, or 7s can be split unless the dealer has an 8, 9, ten-card, or
+            ace. Finally, 6s should not be split unless the dealer's card is
+            poor (2 through 6).
+          </p>
+
+          <!-- end of instructions -->
         </div>
 
-        <div class="row col s12 center">
+        <!-- Page content end -->
+      </div>
 
-            <h1 class="highScore">OBJECT OF THE GAME</h1>
-            <p class="body-font">Each participant attempts to beat the dealer by getting a count as close to 21 as possible, without going over 21.
-            </p>
-            <h1 class="highScore">CARD VALUES/SCORING</h1>
-            <p class="body-font">It is up to each individual player if an ace is worth 1 or 11. Face cards are 10 and any other card is its pip value.
-            </p>
-            <h1 class="highScore">BETTING</h1>
-            <p class="body-font">Before the deal begins, each player places a bet, in chips, in front of them in the designated area. Minimum and maximum limits are established on the betting, and the general limits are from $2 to $500.
-            </p>
-            <h1 class="highScore">THE DEAL</h1>
-            <p class="body-font">When all the players have placed their bets, the dealer gives one card face up to each player in rotation clockwise, and then one card face up to themselves. Another round of cards is then dealt face up to each player, but the dealer takes the second card face down. Thus, each player except the dealer receives two cards face up, and the dealer receives one card face up and one card face down. (In some games, played with only one deck, the players' cards are dealt face down and they get to hold them. Today, however, virtually all Blackjack games feature the players' cards dealt face up on the condition that no player may touch any cards.)
-            </p>
-            <h1 class="highScore">NATURALS</h1>
-            <p class="body-font">If a player's first two cards are an ace and a "ten-card" (a picture card or 10), giving a count of 21 in two cards, this is a natural or "blackjack." If any player has a natural and the dealer does not, the dealer immediately pays that player one and a half times the amount of their bet. If the dealer has a natural, they immediately collect the bets of all players who do not have naturals, (but no additional amount). If the dealer and another player both have naturals, the bet of that player is a stand-off (a tie), and the player takes back his chips.
-            </p>
-            <p class="body-font">If the dealer's face-up card is a ten-card or an ace, they look at their face-down card to see if the two cards make a natural. If the face-up card is not a ten-card or an ace, they do not look at the face-down card until it is the dealer's turn to play.
-            </p>
-            <h1 class="highScore">THE PLAY</h1>
-            <p class="body-font">The player to the left goes first and must decide whether to "stand" (not ask for another card) or "hit" (ask for another card in an attempt to get closer to a count of 21, or even hit 21 exactly). Thus, a player may stand on the two cards originally dealt to them, or they may ask the dealer for additional cards, one at a time, until deciding to stand on the total (if it is 21 or under), or goes "bust" (if it is over 21). In the latter case, the player loses and the dealer collects the bet wagered. The dealer then turns to the next player to their left and serves them in the same manner.
-            </p>
-            <p class="body-font">The combination of an ace with a card other than a ten-card is known as a "soft hand," because the player can count the ace as a 1 or 11, and either draw cards or not. For example with a "soft 17" (an ace and a 6), the total is 7 or 17. While a count of 17 is a good hand, the player may wish to draw for a higher total. If the draw creates a bust hand by counting the ace as an 11, the player simply counts the ace as a 1 and continues playing by standing or "hitting" (asking the dealer for additional cards, one at a time).
-            </p>
-            <h1 class="highScore">THE DEALER'S PLAY</h1>
-            <p class="body-font">When the dealer has served every player, the dealers face-down card is turned up. If the total is 17 or more, it must stand. If the total is 16 or under, they must take a card. The dealer must continue to take cards until the total is 17 or more, at which point the dealer must stand. If the dealer has an ace, and counting it as 11 would bring the total to 17 or more (but not over 21), the dealer must count the ace as 11 and stand. The dealer's decisions, then, are automatic on all plays, whereas the player always has the option of taking one or more cards.
-            </p>
-            <h1 class="highScore">SIGNALING INTENTIONS</h1>
-            <p class="body-font">When a player's turn comes, they can say "Hit" or can signal for a card by scratching the table with a finger or two in a motion toward themselves, or they can wave their hand in the same motion that would say to someone "Come here!" When the player decides to stand, they can say "Stand" or "No more," or can signal this intention by moving their hand sideways, palm down and just above the table.
-            </p>
-            <h1 class="highScore">DOUBLING DOWN</h1>
-            <p class="body-font">Another option open to the player is doubling their bet when the original two cards dealt total 9, 10, or 11. When the player's turn comes, they place a bet equal to the original bet, and the dealer gives the player just one card, which is placed face down and is not turned up until the bets are settled at the end of the hand. With two fives, the player may split a pair, double down, or just play the hand in the regular way. Note that the dealer does not have the option of splitting or doubling down.
-            </p>
-            <h1 class="highScore">BASIC STRATEGY</h1>
-            <p class="body-font">Winning tactics in Blackjack require that the player play each hand in the optimum way, and such strategy always takes into account what the dealer's upcard is. When the dealer's upcard is a good one, a 7, 8, 9, 10-card, or ace for example, the player should not stop drawing until a total of 17 or more is reached. When the dealer's upcard is a poor one, 4, 5, or 6, the player should stop drawing as soon as he gets a total of 12 or higher. The strategy here is never to take a card if there is any chance of going bust. The desire with this poor holding is to let the dealer hit and hopefully go over 21. Finally, when the dealer's up card is a fair one, 2 or 3, the player should stop with a total of 13 or higher.
-            </p>
-            <p class="body-font">With a soft hand, the general strategy is to keep hitting until a total of at least 18 is reached. Thus, with an ace and a six (7 or 17), the player would not stop at 17, but would hit.
-            </p>
-            <p class="body-font">The basic strategy for doubling down is as follows: With a total of 11, the player should always double down. With a total of 10, he should double down unless the dealer shows a ten-card or an ace. With a total of 9, the player should double down only if the dealer's card is fair or poor (2 through 6).
-            </p>
-            <p class="body-font">For splitting, the player should always split a pair of aces or 8s; identical ten-cards should not be split, and neither should a pair of 5s, since two 5s are a total of 10, which can be used more effectively in doubling down. A pair of 4s should not be split either, as a total of 8 is a good number to draw to. Generally, 2s, 3s, or 7s can be split unless the dealer has an 8, 9, ten-card, or ace. Finally, 6s should not be split unless the dealer's card is poor (2 through 6).
-                </p>
-
-
-        </div>
-
+      <!-- Background matt image end -->
+    </div>
   </body>
 </html>
