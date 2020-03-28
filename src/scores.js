@@ -1,9 +1,32 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 $(document).ready(function () {
+	var player_usernameInput = $("#playerName");
 	var scoreList = $("scores");
-	var scoresContainer = $(".scores-container");
+	var scoresContainer = $("#scores-container");
 
+	$(document).on("submit", "#user-form", handleUserFormSubmit);
 	// Getting the initial list of Users
 	getUsers();
+
+	function handleUserFormSubmit(event) {
+		event.preventDefault();
+		// Don't do anything if the name fields hasn't been filled out
+		if (!player_usernameInput.val().trim().trim()) {
+			return;
+		}
+		// Calling the upsertUser function and passing in the value of the name input
+		upsertUser({
+			player_username: player_usernameInput
+				.val()
+				.trim(),
+		});
+	}
+
+	    // A function for creating an user. Calls getUsers upon completion
+	function upsertUser(UserData) {
+		$.post("/api/scores", UserData)
+			.then(getUsers);
+	}
 
 	// Function for creating a new list row for each user
 	function createUserRow(userData) {
@@ -15,7 +38,7 @@ $(document).ready(function () {
 
 	// Function for retrieving users and getting them ready to be rendered to the page
 	function getUsers() {
-		$.get("/api/users", function (data) {
+		$.get("/api/scores", function (data) {
 			var rowsToAdd = [];
 			for (var i = 0; i < data.length; i++) {
 				rowsToAdd.push(createUserRow(data[i]));
