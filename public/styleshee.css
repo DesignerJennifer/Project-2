@@ -1,7 +1,7 @@
 /* full Background image - wood */
 body {
   background-image: url("./Images/woodBackground_table.jpg");
-  background-repeat: repeat;
+  /* background-repeat: repeat; */
 }
 
 /* Logo in nav bar */
@@ -18,7 +18,7 @@ body {
   margin-left: auto;
   padding: 30px;
   width: 1180px;
-  height: 620px;
+  height: 750px;
 }
 
 #tableMatt {
@@ -27,6 +27,23 @@ body {
   background-size: 1100px, 500px;
   /* width: 1100px;
   height: 500px; */
+}
+
+#rulesMatt {
+  background-image: url("./Images/table_Matt_rules.png");
+  background-repeat: no-repeat;
+  /* width: 1100px;
+  height: 500px; */
+}
+
+.rulesMattDiv {
+  margin-top: 15px;
+  background-size: auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 30px;
+  width: 1180px;
+  height: 2570px;
 }
 
 .displayDeck {
@@ -78,6 +95,13 @@ body {
   font-weight: 600;
   font-size: 1em;
   line-height: 0.5em;
+}
+
+.rules-body {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.5em;
 }
 
 .highScore {
