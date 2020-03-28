@@ -2,13 +2,11 @@
  
 # Contributors - Kellen, Jennifer, Matt, John
  
-## USERSTORY:
+## User Story:
 As a blackjack player, I want an app I can play, so that I can relax and practice my favorite game.
- 
+
+## Descripton:
 This blackjack app was designed to let anyone play blackjack. You can add your name and start playing! Don’t know how to play? Don’t worry, there is a ‘Rules’ section that will teach you how. You can place different bets and try to beat the dealer. When you’re done you can see your name added to the leaderboard in the ‘Scores’ section!
- 
-## Motivation
-At Beer Me, we wanted to build out a beer-specific app to cut through the noise and get to the heart of delicious beers available within a close proximity.
  
 ## Features
 Landing page
@@ -38,5 +36,5 @@ To start game play click ‘Start’ and add your name. You will then be taken t
 
 
 ## Links
- 
+
 Repository: https://github.com/DesignerJennifer/Project-2
